@@ -31,6 +31,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
+  .state('app.home', {
+      url: '/home',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/home.html',
+          controller: 'HomeCtrl'
+        }
+      }
+    })
 
   .state('app.search', {
     url: '/search',
@@ -69,5 +78,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/home');
 });
