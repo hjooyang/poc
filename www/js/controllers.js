@@ -52,7 +52,23 @@ angular.module('starter.controllers', [])
   ];
 })
 .controller('HomeCtrl', function($scope) {
-  
+
+  // socket.on('connect', function() {
+  //     socket.on('text', function(text) {
+  //       alert(text);
+  //      });
+  //    });
+  // var socket = io();
+  var socket = io.connect();
+  $('form').submit(function(){
+    socket.emit('D', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+  socket.on('D', function(msg) {
+    $('#msgs').append($('<li>').text(msg));
+  });
+
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
