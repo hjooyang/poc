@@ -76,7 +76,34 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'PlaylistCtrl'
       }
     }
-  });
+  })
+    .state('app.catalog', {
+      url: '/catalog',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/catalog.html',
+          controller: 'CatalogCtrl'
+        }
+      }
+    })
+    .state('app.cyberwindow', {
+      url: '/cyberwindow',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/cyberwindow.html',
+          controller: 'CyberwindowCtrl'
+        }
+      }
+    })
+    .state('app.healthcare', {
+      url: '/healthcare',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/healthcare.html',
+          controller: 'HealthcareCtrl'
+        }
+      }
+    });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/app/home');
 });
