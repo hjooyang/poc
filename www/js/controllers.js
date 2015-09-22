@@ -4,6 +4,14 @@ angular.module('starter.controllers', [])
     $ionicSideMenuDelegate.toggleLeft();
   };
 })
+.controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
+  $scope.showMenu = function () {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+  $scope.showRightMenu = function () {
+    $ionicSideMenuDelegate.toggleRight();
+  };
+})
 .controller('CatalogCtrl', function($scope) {})
 
 .controller('CyberwindowCtrl', function($scope, Chats) {
