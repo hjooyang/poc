@@ -13,7 +13,7 @@ angular.module('starter.controllers', [])
   };
 })
 .controller('CatalogCtrl', function($scope) {
-  var socket = io.connect('http://localhost:3000');
+
 })
 
 .controller('CyberwindowCtrl', function($scope, Chats) {
@@ -39,6 +39,22 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+  $scope.responses = [];
+  var socket;
+
+  $scope.submit = function() {
+    console.log('scope - ', $scope);
+    console.log('birth - ', $scope.birth);
+    console.log('gender - ', $scope.gender);
+
+    socket = io.connect('http://linaserver0922.mybluemix.net');
+      socket.emit('D',$scope.birth);
+      return false;
+      
+  }
+  // socket.on('D', function (msg) {
+  //         console.log('received - ', msg);
+  // });
 })
 .controller('NosmokingCtrl', function($scope) {
   $scope.settings = {

@@ -3,22 +3,21 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
+<ion-view title="{{navTitle}}" left-buttons="leftButtons">
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
-  <!-- Catalog Tab -->
   <ion-tab title="Catalog" icon-off="ion-ios-book-outline" icon-on="ion-ios-book" href="#/tab/catalog">
     <ion-nav-view name="tab-catalog"></ion-nav-view>
   </ion-tab>
 
-  <!-- Cyberwindow Tab -->
   <ion-tab title="Cyberwindow" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/cyberwindow">
     <ion-nav-view name="tab-cyberwindow"></ion-nav-view>
   </ion-tab>
 
-  <!-- Healthcare Tab -->
   <ion-tab title="Healthcare" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/healthcare">
     <ion-nav-view name="tab-healthcare"></ion-nav-view>
   </ion-tab>
 
 
 </ion-tabs>
+</ion-view>

@@ -47,4 +47,12 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+.factory('Socket', function() {
+  var socket = io.connect('http://linaserver0922.mybluemix.net');
+        socket.on('connect', function() {
+            socket.on('text', function(text) {
+                alert(text);
+            });
+        });
 });

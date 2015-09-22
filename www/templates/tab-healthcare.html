@@ -1,22 +1,30 @@
 <ion-view view-title="Healthcare">
  <ion-content class="has-tabs-top">
     <div class="list list-inset">
-       
-        <form>
+        <form ng-submit="submit()" ng-controller="HealthcareCtrl">
           <label class="item item-input">
             <span class="input-label">Birthdate</span>
-            <input id="birth" type="date">
+            <input id="birth" type="number" ng-model="birth">
           </label>
-          <div clas="list">
-        <ion-radio id = "man" ng-model="gender" ng-value="man">남자</ion-radio>
-        <ion-radio id = "woman" ng-model="gender" ng-value="woman">여자</ion-radio>
-      </div>
+          <label>
+            <input type="radio" ng-model="gender" ng-value="men">hi</input>
+          </label>
+            <!-- <div clas="list"> -->
+            <ion-radio ng-value="male" ng-model="gender">male</ion-radio>
+            <ion-radio ng-value="female" ng-model="gender">female</ion-radio>
+              <label>
+               <ion-radio ng-model="gender" ng-value="man">남자</ion-radio>
+              </label>
+              <label>
+                <ion-radio ng-model="gender" ng-value="woman">여자</ion-radio>
+              </label>
+            <!-- </div> -->
+        
       <button type="submit" class="button button-full button-positive">계산하기</button>
         </form>
-      
   </div>
   <div>
-    <ul id="msgs"></ul>
+    <ul id="msgs"><li ng-repeat="response in responses">{{response.msg}}</li></ul>
   </div>
   </ion-content>
   
