@@ -57,7 +57,50 @@ angular.module('starter.controllers', [])
    });
 })
 .controller('NosmokingCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+    $scope.settings = {
+      enableFriends: true
+    };
+    $scope.responses = [];
+    var socket = io.connect('http://lina3.mybluemix.net');
+
+    $scope.submit = function() {
+      console.log('scope - ', $scope);
+      console.log('birth - ', $scope.birth);
+      console.log('gender - ', $scope.gender);
+
+      socket.emit('D',{ birth: $scope.birth,
+        gender: $scope.gender
+      });
+      return false;
+    }
+    socket.on('D', function (msg) {
+      console.log('received - ', msg);
+    });
+  })
+  .controller('TeethCtrl', function($scope) {
+
+    var socket = io.connect('http://lina3.mybluemix.net');
+
+    $scope.submit = function() {
+      console.log('scope - ', $scope);
+
+      console.log('name - ', $scope.name);
+      console.log('birth - ', $scope.birth);
+      console.log('gender - ', $scope.gender);
+      console.log('phone - ', $scope.phone);
+
+      socket.emit('D',{
+        name: $scope.name,
+        birth: $scope.birth,
+        gender: $scope.gender,
+        phone: $scope.phone
+      });
+      return false;
+    }
+    socket.on('D', function (msg) {
+      console.log('received - ', msg);
+    });
+  })
+  .controller('SidePolicyPageCtrl', function ($scope) {
+
+  });

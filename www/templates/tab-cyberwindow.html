@@ -1,16 +1,39 @@
 <ion-view view-title="Cyberwindow">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
+      <div class="list">
+        <div class="item item-divider">
+          통합조회서비스
+        </div>
+        <a class="item" href="#">
+          계약조회
+        </a>
+        <a class="item" href="#">
+          계약진행조회
+        </a>
+        <a class="item" href="#">
+          청약철회조회/접수
+        </a>
+      </div>
+      <div class="list">
+        <div class="item item-divider">
+          변경서비스
+        </div>
+        <a class="item" href="#">
+          계약자 정보 변경
+        </a>
+        <a class="item" href="#">
+          보험료납입 정보 변경
+        </a>
+      </div>
+      <div class="list">
+        <div class="item item-divider">
+          입출금서비스
+        </div>
+        <a class="item" href="#">
+          보험료 납입
+        </a>
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>

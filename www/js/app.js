@@ -81,7 +81,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   .state('nosmoking', {
     url: '/nosmoking',
       templateUrl: 'templates/product-nosmoking.html'
-      // controller: 'NosmokingCtrl'
+  })
+  .state('teeth', {
+    url: '/teeth',
+    templateUrl: 'templates/product-teeth.html'
+  })
+  .state('tab.policy', {
+    url: '/policy',
+    views: {
+      'tab': {
+        templateUrl: 'templates/side-policy.html',
+        controller : 'SidePolicyPageCtrl'
+      }
+    }
+    // controller: 'NosmokingCtrl'
     //views: {
     //  'tab-healthcare': {
     //    templateUrl: 'templates/product-nosmoking.html',
