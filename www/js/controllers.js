@@ -51,7 +51,6 @@ angular.module('starter.controllers', [])
                          gender: $scope.gender
       });
       return false;
-
   }
    socket.on('D', function (msg) {
            console.log('received - ', msg);
