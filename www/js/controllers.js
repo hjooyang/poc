@@ -40,19 +40,19 @@ angular.module('starter.controllers', [])
     enableFriends: true
   };
   $scope.responses = [];
-  var  socket = io.connect('http://linaserver0922.mybluemix.net');;
+  var socket = io.connect('http://lina3.mybluemix.net');
 
   $scope.submit = function() {
     console.log('scope - ', $scope);
     console.log('birth - ', $scope.birth);
     console.log('gender - ', $scope.gender);
-  
+
       socket.emit('D',$scope.birth);
       return false;
   }
-  socket.on('D', function (msg) {
-          console.log('received - ', msg);
-  });
+   socket.on('D', function (msg) {
+           console.log('received - ', msg);
+   });
 })
 .controller('NosmokingCtrl', function($scope) {
   $scope.settings = {
