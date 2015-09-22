@@ -1,5 +1,9 @@
 angular.module('starter.controllers', [])
-
+.controller('AppCtrl', function ($scope, $ionicSideMenuDelegate) {
+   $scope.toggleLeftSideMenu = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+})
 .controller('CatalogCtrl', function($scope) {})
 
 .controller('CyberwindowCtrl', function($scope, Chats) {
