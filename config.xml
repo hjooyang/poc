@@ -8,7 +8,7 @@
       Ionic Framework Team
     </author>
   <content src="index.html"/>
-  <access origin="http://linaserver0922.mybluemix.net*"/>
+  <access origin="http://lina3.mybluemix.net *"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
