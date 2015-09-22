@@ -61,8 +61,9 @@ angular.module('starter.controllers', [])
   // var socket = io();
   var socket = io.connect();
   $('form').submit(function(){
-    socket.emit('D', $('#m').val());
-    $('#m').val('');
+    socket.emit('D', $('#birth').val());
+    console.log($('#birth').val())
+    $('#birth').val('');
     return false;
   });
   socket.on('D', function(msg) {
@@ -72,4 +73,14 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+.controller('CyberwindowCtrl', function($scope, $stateParams) {
+})
+.controller('HealthcareCtrl', function($scope, $stateParams) {
+})
+.controller('CatalogCtrl', function($scope, $stateParams) {
+  $('form').submit(function() {
+    console.log($('#birth').val());
+    $('#birth').val('');
+  })
 });

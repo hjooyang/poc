@@ -24,7 +24,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('app', {
     url: '/app',
     abstract: true,
@@ -40,7 +39,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-
   .state('app.search', {
     url: '/search',
     views: {
@@ -49,7 +47,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
-
   .state('app.browse', {
       url: '/browse',
       views: {
@@ -80,8 +77,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app.catalog', {
       url: '/catalog',
       views: {
-        'menuContent': {
-          templateUrl: 'templates/catalog.html',
+        'menuContent' : {
+          templateUrl: "templates/catalog.html",
           controller: 'CatalogCtrl'
         }
       }
@@ -89,7 +86,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app.cyberwindow', {
       url: '/cyberwindow',
       views: {
-        'menuContent': {
+        'cyberwindow-tab': {
           templateUrl: 'templates/cyberwindow.html',
           controller: 'CyberwindowCtrl'
         }
@@ -98,7 +95,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app.healthcare', {
       url: '/healthcare',
       views: {
-        'menuContent': {
+        'healthcare-tab': {
           templateUrl: 'templates/healthcare.html',
           controller: 'HealthcareCtrl'
         }
