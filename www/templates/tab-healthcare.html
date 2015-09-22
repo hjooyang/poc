@@ -1,9 +1,23 @@
 <ion-view view-title="Healthcare">
-  <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+ <ion-content class="has-tabs-top">
+    <div class="list list-inset">
+       
+        <form>
+          <label class="item item-input">
+            <span class="input-label">Birthdate</span>
+            <input id="birth" type="date">
+          </label>
+          <div clas="list">
+        <ion-radio id = "man" ng-model="gender" ng-value="man">남자</ion-radio>
+        <ion-radio id = "woman" ng-model="gender" ng-value="woman">여자</ion-radio>
+      </div>
+      <button type="submit" class="button button-full button-positive">계산하기</button>
+        </form>
+      
+  </div>
+  <div>
+    <ul id="msgs"></ul>
+  </div>
   </ion-content>
+  
 </ion-view>

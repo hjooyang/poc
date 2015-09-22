@@ -1,23 +1,27 @@
 <ion-view title="Catalog">
- <ion-content class="has-tabs-top">
-    <div class="list list-inset">
-       
-        <form>
-          <label class="item item-input">
-            <span class="input-label">Birthdate</span>
-            <input id="birth" type="date">
-          </label>
-          <div clas="list">
-        <ion-radio id = "man" ng-model="gender" ng-value="man">남자</ion-radio>
-        <ion-radio id = "woman" ng-model="gender" ng-value="woman">여자</ion-radio>
-      </div>
-      <button type="submit" class="button button-full button-positive">계산하기</button>
-        </form>
-      
-  </div>
-  <div>
-    <ul id="msgs"></ul>
-  </div>
+<ion-content>
+
+<div class="card">
+  <a href="#" class="item">
+    (무)THE건강한 치아보험
+  </a>
+</div>
+<div class="card">
+  <a href="#" class="item item-icon-right">
+    (무)OK실버보험
+  </a>
+</div>
+<div class="card">
+  <a class="item icon icon-right ion-chevron-right" href="#/tab/catalog/nosmoking">Tabs 
+    (무)e-금연OK정기보험(갱신형)
+  </a>
+</div>
+    <!--ion-list>
+    <ion-toggle  ng-model="settings.enableFriends">
+        Enable Friends
+    </ion-toggle>
+    </ion-list-->
+
   </ion-content>
   <!--ion-content class="padding">
     <div class="list card">

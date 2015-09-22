@@ -12,7 +12,9 @@ angular.module('starter.controllers', [])
     $ionicSideMenuDelegate.toggleRight();
   };
 })
-.controller('CatalogCtrl', function($scope) {})
+.controller('CatalogCtrl', function($scope) {
+  var socket = io.connect('http://localhost:3000');
+})
 
 .controller('CyberwindowCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -34,6 +36,11 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HealthcareCtrl', function($scope) {
+  $scope.settings = {
+    enableFriends: true
+  };
+})
+.controller('NosmokingCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };

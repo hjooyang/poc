@@ -77,6 +77,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         controller: 'HealthcareCtrl'
       }
     }
+  })
+  .state('tab.nosmoking', {
+    url: '/nosmoking',
+    views: {
+      'tab-healthcare': {
+        templateUrl: 'templates/healthcare-nosmoking.html',
+        // controller: 'NosmokingCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
