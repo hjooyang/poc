@@ -6,26 +6,22 @@
             <span class="input-label">Birthdate</span>
             <input id="birth" type="number" ng-model="birth">
           </label>
-          <label>
-            <input type="radio" ng-model="gender" ng-value="men">hi</input>
-          </label>
-            <!-- <div clas="list"> -->
-            <ion-radio ng-value="male" ng-model="gender">male</ion-radio>
-            <ion-radio ng-value="female" ng-model="gender">female</ion-radio>
-              <label>
-               <ion-radio ng-model="gender" ng-value="man">남자</ion-radio>
-              </label>
-              <label>
-                <ion-radio ng-model="gender" ng-value="woman">여자</ion-radio>
-              </label>
-            <!-- </div> -->
-        
-      <button type="submit" class="button button-full button-positive">계산하기</button>
+          <div class="list">
+          <ion-radio ng-model="gender" ng-value="'male'">남자</ion-radio>
+          <ion-radio ng-model="gender" ng-value="'female'">여자</ion-radio>
+              <!--<label>-->
+               <!--<ion-radio ng-model="gender" ng-value="'man'">남자</ion-radio>-->
+              <!--</label>-->
+              <!--<label>-->
+                <!--<ion-radio ng-model="gender" ng-value="woman">여자</ion-radio>-->
+              <!--</label>-->
+          </div>
+          <button type="submit" class="button button-full button-positive">계산하기</button>
         </form>
   </div>
-  <div>
+  <!--div>
     <ul id="msgs"><li ng-repeat="response in responses">{{response.msg}}</li></ul>
-  </div>
+  </div-->
   </ion-content>
-  
+
 </ion-view>

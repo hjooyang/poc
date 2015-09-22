@@ -47,7 +47,9 @@ angular.module('starter.controllers', [])
     console.log('birth - ', $scope.birth);
     console.log('gender - ', $scope.gender);
 
-      socket.emit('D',$scope.birth);
+      socket.emit('D',{ birth: $scope.birth,
+                         gender: $scope.gender
+      });
       return false;
 
   }
