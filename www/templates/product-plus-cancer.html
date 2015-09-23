@@ -34,8 +34,7 @@
             </div>
         </div>
         <div class="list">
-          <!-- <form name="insuranceTerm"> -->
-            <label class="item item-input">
+            <label class="item item-input item-select">
               <span class="input-label">보험기간</span>
               <select ng-model="insuranceTerm" ng-change="getSizeNames(item.insuranceTerm)">
                 <option value=''>Select</option>
@@ -43,15 +42,14 @@
                   <option value='80'>80세만기</option>
               </select>
             </label>
-            <label class="item item-input">
-              <span class="input-label">납입기간</span>
+            <label class="item item-input item-select">
+              <div class="input-label">납입기간</div>
               <select ng-model="payTerm" ng-change="getSizeNames(item.payTerm)">
                 <option value=''>Select</option>
                  <option value='20'>20년납</option>
                   <option value='80'>80세납</option>
               </select>
             </label>
-          <!-- </form> -->
         </div>
          <!--div class="list">
            <span class="col">개인정보 수집 이용에 동의하십니까?</span>
