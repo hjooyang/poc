@@ -86,6 +86,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/teeth',
     templateUrl: 'templates/product-teeth.html'
   })
+  .state('plus-cancer', {
+    url: '/plus-cancer',
+    templateUrl: 'templates/product-plus-cancer.html'
+  })
+  .state('pluscancer-step1', {
+    url: '/pluscancer-step1',
+    templateUrl: 'templates/pluscancer-step1.html'
+  })
+  .state('pluscancer-step2', {
+    url: '/pluscancer-step2',
+    templateUrl: 'templates/pluscancer-step2.html'
+  })
   .state('tab.policy', {
     url: '/policy',
     views: {

@@ -40,6 +40,7 @@ angular.module('starter.controllers', [])
     enableFriends: true
   };
   $scope.responses = [];
+
   var socket = io.connect('http://lina3.mybluemix.net');
 
   $scope.submit = function() {
@@ -61,14 +62,17 @@ angular.module('starter.controllers', [])
       enableFriends: true
     };
     $scope.responses = [];
+    $scope.type = "noSmoking";
     var socket = io.connect('http://lina3.mybluemix.net');
 
     $scope.submit = function() {
-      console.log('scope - ', $scope);
+      console.log('type - ', $scope.type);
       console.log('birth - ', $scope.birth);
       console.log('gender - ', $scope.gender);
 
-      socket.emit('D',{ birth: $scope.birth,
+      socket.emit('D',{ 
+        type: $scope.type,
+        birth: $scope.birth,
         gender: $scope.gender
       });
       return false;
@@ -80,16 +84,17 @@ angular.module('starter.controllers', [])
   .controller('TeethCtrl', function($scope) {
 
     var socket = io.connect('http://lina3.mybluemix.net');
+    $scope.type = "teeth";
 
     $scope.submit = function() {
-      console.log('scope - ', $scope);
-
+      console.log('type - ', $scope.type);
       console.log('name - ', $scope.name);
       console.log('birth - ', $scope.birth);
       console.log('gender - ', $scope.gender);
       console.log('phone - ', $scope.phone);
 
       socket.emit('D',{
+        type: $scope.type,
         name: $scope.name,
         birth: $scope.birth,
         gender: $scope.gender,
@@ -101,6 +106,59 @@ angular.module('starter.controllers', [])
       console.log('received - ', msg);
     });
   })
+  .controller('PlusCancerCtrl', function($scope) {
+
+    var socket = io.connect('http://lina3.mybluemix.net');
+    $scope.type = "plusCancer";
+
+    $scope.submit = function() {
+      console.log('type - ', $scope.type);
+      console.log('name - ', $scope.name);
+      console.log('birth - ', $scope.birth);
+      console.log('gender - ', $scope.gender);
+      console.log('phone - ', $scope.phone);
+      console.log('collectionData - ', $scope.dataAgree);
+      console.log('consignmentAgree - ', $scope.consignmentAgree);
+       console.log('insuranceTerm - ', $scope.insuranceTerm);
+        console.log('payTerm - ', $scope.payTerm);
+
+      socket.emit('D',{
+        type: $scope.type,
+        name: $scope.name,
+        birth: $scope.birth,
+        gender: $scope.gender,
+        phone: $scope.phone,
+        insuranceTerm: $scope.insuranceTerm,
+        payTerm: $scope.payTerm
+      });
+
+      return false;
+    }
+    socket.on('D', function (msg) {
+      console.log('received - ', msg);
+    });
+  })
+  .controller('PlusCancerStep1Ctrl', function($scope, $q, $ionicPopup) {
+
+    var socket = io.connect('http://lina3.mybluemix.net');
+    $scope.type = "plusCancerStep1";
+
+    $scope.submit = function() {
+      console.log('hi');
+       $ionicPopup.alert({
+              title: 'Success',
+              content: '가입절차로 넘어갑니다.'
+            }).then(function(res) {
+              console.log('Test Alert Box');
+            });
+      return false;
+    }
+    socket.on('D', function (msg) {
+      console.log('received - ', msg);
+    });
+  })
   .controller('SidePolicyPageCtrl', function ($scope) {
 
   });
+
+
