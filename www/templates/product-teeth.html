@@ -1,0 +1,29 @@
+<ion-view view-title="라이나 생명">
+  <ion-content class="has-tabs-top">
+
+    <div class="list list-inset">
+      <form ng-submit="submit()" ng-controller="TeethCtrl">
+        <label class="item item-input">
+          <span class="input-label">이름</span>
+          <input id="name" type="text" ng-model="name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">생년월일</span>
+          <input id="birth" type="number" ng-model="birth" placeholder="주민번호 앞자리">
+        </label>
+        <div class="list">
+          <ion-radio ng-model="gender" ng-value="'male'">남자</ion-radio>
+          <ion-radio ng-model="gender" ng-value="'female'">여자</ion-radio>
+        </div>
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">연락처</span>
+            <input id="phone" type="number" ng-model="phone" placeholder="(-)없이 번호 입력">
+          </label>
+        </div>
+        <button type="submit" class="button button-full button-positive">무료 상담 신청</button>
+      </form>
+    </div>
+
+  </ion-content>
+</ion-view>

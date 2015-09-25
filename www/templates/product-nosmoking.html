@@ -1,0 +1,30 @@
+<ion-view view-title="라이나 생명">
+  <ion-header-bar>hi</ion-header-bar>
+<ion-content class="has-tabs-top">
+
+  <div class="list list-inset">
+    <form ng-submit="submit()" ng-controller="NosmokingCtrl">
+      <label class="item item-input">
+        <span class="input-label">Birthdate</span>
+        <input id="birth" type="number" ng-model="birth">
+      </label>
+      <div class="list">
+        <ion-radio ng-model="gender" ng-value="'male'">남자</ion-radio>
+        <ion-radio ng-model="gender" ng-value="'female'">여자</ion-radio>
+        <!--<label>-->
+        <!--<ion-radio ng-model="gender" ng-value="'man'">남자</ion-radio>-->
+        <!--</label>-->
+        <!--<label>-->
+        <!--<ion-radio ng-model="gender" ng-value="woman">여자</ion-radio>-->
+        <!--</label>-->
+      </div>
+      <button type="submit" class="button button-full button-positive">내 보험료 계산해보기</button>
+    </form>
+    <div align="center">
+      <h3>내 보험료 <b>직접 설계해보기</b></h3>
+      <h5>보험료를 확인하셔도 가입권유 전화를 드리지 않습니다.</h5>
+    </div>
+  </div>
+
+</ion-content>
+</ion-view>
