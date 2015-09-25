@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.linapocclient946145" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>lina-poc-client</name>
+  <name>lina-poc-client-test</name>
   <description>
         An Ionic Framework and Cordova project.
     </description>
@@ -8,8 +8,8 @@
       Ionic Framework Team
     </author>
   <content src="index.html"/>
-  <access origin="http://lina4.mybluemix.net *"/>
-  <allow-navigation href="http://lina4.mybluemix.net/*" />
+  <access origin="http://lina3.mybluemix.net *"/>
+  <allow-navigation href="http://lina3.mybluemix.net/*" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
