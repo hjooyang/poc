@@ -109,33 +109,30 @@ angular.module('starter.controllers', [])
   .controller('PlusCancerCtrl', function($scope) {
 
     var socket = io.connect('http://lina4.mybluemix.net');
-    $scope.type = "plusCancer";
+
+    $scope.productType = "plusCancer";
 
     $scope.submit = function() {
-      console.log('type - ', $scope.type);
-      console.log('name - ', $scope.name);
-      console.log('birth - ', $scope.birth);
-      console.log('gender - ', $scope.gender);
-      console.log('phone - ', $scope.phone);
-      console.log('collectionData - ', $scope.dataAgree);
-      console.log('consignmentAgree - ', $scope.consignmentAgree);
-       console.log('insuranceTerm - ', $scope.insuranceTerm);
-        console.log('payTerm - ', $scope.payTerm);
+      console.log('type :: ', $scope.productType);
+      console.log('birth :: ', $scope.birth);
+      console.log('gender :: ', $scope.gender);
+      console.log('renewalType :: ', $scope.renewalType);
+      console.log('insuranceTerm :: ', $scope.insuranceTerm);
+      console.log('payTerm :: ', $scope.payTerm);
 
-      socket.emit('D',{
-        type: $scope.type,
-        name: $scope.name,
-        birth: $scope.birth,
-        gender: $scope.gender,
-        phone: $scope.phone,
-        insuranceTerm: $scope.insuranceTerm,
-        payTerm: $scope.payTerm
-      });
-
+    socket.emit('D',{
+      productType: $scope.productType,
+      birth: $scope.birth,
+      gender: $scope.gender,
+      renewalType: $scope.renewalType,
+      insuranceTerm: $scope.insuranceTerm,
+      payTerm: $scope.payTerm
+    });
       return false;
     }
+
     socket.on('D', function (msg) {
-      console.log('received - ', msg);
+      console.log('received :: ', msg);
     });
   })
   .controller('PlusCancerStep1Ctrl', function($scope, $q, $ionicPopup) {

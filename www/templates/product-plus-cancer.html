@@ -4,10 +4,10 @@
     <div class="list list-inset">
       <form ng-submit="submit()" ng-controller="PlusCancerCtrl">
         <div class="list">
-        <label class="item item-input">
+        <!-- <label class="item item-input">
           <span class="input-label">이름</span>
           <input id="name" type="text" ng-model="name">
-        </label>
+        </label> -->
         <label class="item item-input">
           <span class="input-label">생년월일</span>
           <input id="birth" type="date" ng-model="birth" placeholder="주민번호 앞자리">
@@ -20,17 +20,17 @@
             <ion-radio ng-model="gender" ng-value="'female'" name="gender">여자</ion-radio>
           </div>
         </div>
-        <div class="list">
+        <!-- <div class="list">
           <label class="item item-input">
             <span class="input-label">연락처</span>
             <input id="phone" type="text" ng-model="phone" placeholder="(-)없이 번호 입력">
           </label>
-        </div>
+        </div> -->
         <div class="list">
            <span class="col">상품유형</span>
             <div class="list col">
-              <ion-radio ng-model="productType" ng-value="'renewal'" name="productType">갱신형</ion-radio>
-              <ion-radio ng-model="productType" ng-value="'nonRenewal'" name="productType">비갱신형  </ion-radio>
+              <ion-radio ng-model="renewalType" ng-value="'renewal'" name="renewalType">갱신형</ion-radio>
+              <ion-radio ng-model="renewalType" ng-value="'nonRenewal'" name="renewalType">비갱신형  </ion-radio>
             </div>
         </div>
         <div class="list">
