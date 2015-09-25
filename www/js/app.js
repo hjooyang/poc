@@ -49,6 +49,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  .state('tab.plus-cancer', {
+    url: '/plus-cancer',
+    views: {
+        'tab-catalog': {
+           templateUrl: 'templates/product-plus-cancer.html'
+        }
+      }
+  })
 
   .state('tab.cyberwindow', {
       url: '/cyberwindow',
@@ -59,6 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+
     .state('tab.chat-detail', {
       url: '/chats/:chatId',
       views: {
@@ -86,10 +95,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/teeth',
     templateUrl: 'templates/product-teeth.html'
   })
-  .state('plus-cancer', {
-    url: '/plus-cancer',
-    templateUrl: 'templates/product-plus-cancer.html'
-  })
+  
   .state('pluscancer-step1', {
     url: '/pluscancer-step1',
     templateUrl: 'templates/pluscancer-step1.html'

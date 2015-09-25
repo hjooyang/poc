@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
   $scope.responses = [];
 
-  var socket = io.connect('http://lina3.mybluemix.net');
+  var socket = io.connect('http://lina4.mybluemix.net');
 
   $scope.submit = function() {
     console.log('scope - ', $scope);
@@ -63,7 +63,7 @@ angular.module('starter.controllers', [])
     };
     $scope.responses = [];
     $scope.type = "noSmoking";
-    var socket = io.connect('http://lina3.mybluemix.net');
+    var socket = io.connect('http://lina4.mybluemix.net');
 
     $scope.submit = function() {
       console.log('type - ', $scope.type);
@@ -83,7 +83,7 @@ angular.module('starter.controllers', [])
   })
   .controller('TeethCtrl', function($scope) {
 
-    var socket = io.connect('http://lina3.mybluemix.net');
+    var socket = io.connect('http://lina4.mybluemix.net');
     $scope.type = "teeth";
 
     $scope.submit = function() {
@@ -108,7 +108,7 @@ angular.module('starter.controllers', [])
   })
   .controller('PlusCancerCtrl', function($scope) {
 
-    var socket = io.connect('http://lina3.mybluemix.net');
+    var socket = io.connect('http://lina4.mybluemix.net');
     $scope.type = "plusCancer";
 
     $scope.submit = function() {
@@ -140,7 +140,7 @@ angular.module('starter.controllers', [])
   })
   .controller('PlusCancerStep1Ctrl', function($scope, $q, $ionicPopup) {
 
-    var socket = io.connect('http://lina3.mybluemix.net');
+    var socket = io.connect('http://lina4.mybluemix.net');
     $scope.type = "plusCancerStep1";
 
     $scope.submit = function() {
