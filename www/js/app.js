@@ -49,11 +49,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-  .state('tab.plus-cancer', {
-    url: '/plus-cancer',
+  .state('product-plus-cancer-step1', {
+    url: '/plus-cancer-step1',
+           templateUrl: 'templates/product-plus-cancer-step1.html'
+   
+  })
+  .state('tab.product-plus-cancer-step2', {
+    url: '/plus-cancer-step2',
     views: {
         'tab-catalog': {
-           templateUrl: 'templates/product-plus-cancer.html'
+           templateUrl: 'templates/product-plus-cancer-step2.html'
         }
       }
   })
@@ -96,14 +101,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/product-teeth.html'
   })
   
-  .state('pluscancer-step1', {
-    url: '/pluscancer-step1',
-    templateUrl: 'templates/pluscancer-step1.html'
-  })
-  .state('pluscancer-step2', {
-    url: '/pluscancer-step2',
-    templateUrl: 'templates/pluscancer-step2.html'
-  })
+  // .state('pluscancer-step1', {
+  //   url: '/pluscancer-step1',
+  //   templateUrl: 'templates/pluscancer-step1.html',
+  //   controller: 'PlusCancerCtrl'
+  // })
+  // .state('pluscancer-step2', {
+  //   url: '/pluscancer-step2',
+  //   templateUrl: 'templates/pluscancer-step2.html'
+  // })
   .state('tab.policy', {
     url: '/policy',
     views: {
