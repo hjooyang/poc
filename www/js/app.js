@@ -58,13 +58,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
   })
 
-  .state('plus-cancer-step2', {
+  .state('tab.plus-cancer-step2', {
     url: '/plus-cancer-step2',
-    templateUrl: 'templates/product-plus-cancer-step2.html'
+      views: {
+        'tab-catalog': {
+          templateUrl: 'templates/product-plus-cancer-step2.html'
+        }
+      }
+
   })
-  .state('pluscancer-step3', {
-    url: '/pluscancer-step3',
-    templateUrl: 'templates/product-plus-cancer-step3.html'
+  .state('tab.plus-cancer-step3', {
+    url: '/plus-cancer-step3',
+      views: {
+        'tab-catalog': {
+          templateUrl: 'templates/product-plus-cancer-step3.html'
+        }
+      }
   })
 
   .state('tab.cyberwindow', {

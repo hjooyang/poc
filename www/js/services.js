@@ -55,4 +55,21 @@ angular.module('starter.services', [])
                 alert(text);
             });
         });
+})
+.factory ('Products', function(){
+  var productLists =[];
+  var pruduct2;
+
+  return {
+    calPlusCancer: function(originalProduct){
+
+      product2 = {
+        "cost" : originalProduct.cost/2,
+        "largeCancer" : originalProduct.largeCancer*2,
+        "smallCancer" : originalProduct.smallCancer*2,
+        "normalCancer" : originalProduct.normalCancer*2,
+        "breastCancer" : originalProduct.breastCancer*2
+      };
+    }
+  }
 });

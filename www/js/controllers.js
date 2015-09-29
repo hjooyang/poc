@@ -106,12 +106,12 @@ angular.module('starter.controllers', [])
       console.log('received - ', msg);
     });
   })
-  .controller('PlusCancerCtrl', function($scope) {
+  .controller('PlusCancerCtrl', function($scope, Products) {
 
     var socket = io.connect('http://lina4.mybluemix.net');
 
     $scope.productType = "plusCancer";
-
+   
     $scope.submit = function() {
       console.log('type :: ', $scope.productType);
       console.log('birth :: ', $scope.birth);
@@ -120,25 +120,36 @@ angular.module('starter.controllers', [])
       console.log('insuranceTerm :: ', $scope.insuranceTerm);
       console.log('payTerm :: ', $scope.payTerm);
 
-    socket.emit('D',{
-      productType: $scope.productType,
-      birth: $scope.birth,
-      gender: $scope.gender,
-      renewalType: $scope.renewalType,
-      insuranceTerm: $scope.insuranceTerm,
-      payTerm: $scope.payTerm
-    });
+      socket.emit('D',{
+        productType: $scope.productType,
+        birth: $scope.birth,
+        gender: $scope.gender,
+        renewalType: $scope.renewalType,
+        insuranceTerm: $scope.insuranceTerm,
+        payTerm: $scope.payTerm
+      });
       return false;
     }
 
-    socket.on('D', function (msg) {
-      console.log('received :: ', msg);
-    });
+    
   })
-  .controller('PlusCancerStep1Ctrl', function($scope, $q, $ionicPopup) {
+  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, Products) {
 
     var socket = io.connect('http://lina4.mybluemix.net');
     $scope.type = "plusCancerStep1";
+     $scope.productLists  = [];
+
+    $scope.calPlusCancer = function(originalProduct){
+      var product2 = {
+        "cost" : originalProduct.cost/2,
+        "largeCancer" : originalProduct.largeCancer*2,
+        "smallCancer" : originalProduct.smallCancer*2,
+        "normalCancer" : originalProduct.normalCancer*2,
+        "breastCancer" : originalProduct.breastCancer*2
+      };
+
+      return product2;
+    };
 
     $scope.submit = function() {
       console.log('hi');
@@ -150,9 +161,21 @@ angular.module('starter.controllers', [])
             });
       return false;
     }
-    socket.on('D', function (msg) {
-      console.log('received - ', msg);
+    
+    socket.on('D', function (data) {
+            console.log('received :: ', data);
+            $scope.productLists.push(data);
+            $scope.productLists.push($scope.calPlusCancer(data));
+
+            console.log('productLists :: ', $scope.productLists[1]);
     });
+  /*  socket.on('D', function (msg) {
+      console.log('received - ', msg);
+      console.log(msg.length);
+      // for (int i =0; i< msg.length; i++) {
+
+      // }
+    });*/
   })
   .controller('SidePolicyPageCtrl', function ($scope) {
 
