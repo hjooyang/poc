@@ -70,7 +70,7 @@ angular.module('starter.controllers', [])
       console.log('birth - ', $scope.birth);
       console.log('gender - ', $scope.gender);
 
-      socket.emit('D',{ 
+      socket.emit('D',{
         type: $scope.type,
         birth: $scope.birth,
         gender: $scope.gender
@@ -106,12 +106,12 @@ angular.module('starter.controllers', [])
       console.log('received - ', msg);
     });
   })
-  .controller('PlusCancerCtrl', function($scope, Products) {
+  .controller('PlusCancerCtrl', function($scope, PlusCancer, Products) {
 
     var socket = io.connect('http://lina4.mybluemix.net');
 
     $scope.productType = "plusCancer";
-   
+
     $scope.submit = function() {
       console.log('type :: ', $scope.productType);
       console.log('birth :: ', $scope.birth);
@@ -128,16 +128,20 @@ angular.module('starter.controllers', [])
         insuranceTerm: $scope.insuranceTerm,
         payTerm: $scope.payTerm
       });
+
+      PlusCancer.saveCalInfo($scope.productType, $scope.birth, $scope.gender, $scope.renewalType, $scope.insuranceTerm, $scope.payTerm)
+      console.log("save cal infor : ", PlusCancer.getCalInfo());
       return false;
     }
 
-    
+
   })
-  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, Products) {
+  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state) {
 
     var socket = io.connect('http://lina4.mybluemix.net');
     $scope.type = "plusCancerStep1";
      $scope.productLists  = [];
+    console.log("save cal infor in step2: ", PlusCancer.getCalInfo());
 
     $scope.calPlusCancer = function(originalProduct){
       var product2 = {
@@ -157,11 +161,11 @@ angular.module('starter.controllers', [])
               title: 'Success',
               content: '가입절차로 넘어갑니다.'
             }).then(function(res) {
-              console.log('Test Alert Box');
+               $state.go('plus-cancer-step3');
             });
       return false;
     }
-    
+
     socket.on('D', function (data) {
             console.log('received :: ', data);
             $scope.productLists.push(data);

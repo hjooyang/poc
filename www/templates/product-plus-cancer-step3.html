@@ -1,73 +1,9 @@
-<ion-view view-title="STEP.3">
-  <ion-content class="has-tabs-top">
+<ion-view view-title="STEP.3 가입 정보 확인 " ng-controller="PlusCancerStep3Ctrl" >
+  <ion-content class="" >
     <div class="list list-inset">
-      <form ng-submit="submit()" ng-controller="PlusCancerCtrl">
-        <div class="list">
-          <label class="item item-input">
-            <span class="input-label">성명</span>
-            <input id="name" type="text" ng-model="name">
-          </label>
-          <label class="item item-input">
-            <span class="input-label">주민번호</span>
-            <input id="firstIdn1" type="date" ng-model="id" placeholder="주민번호 앞자리">
-          </label>
-        </div>
-        <div class="list">
-          <span class="col">성별</span>
-          <div class="list col">
-            <ion-radio ng-model="gender" ng-value="'male'" name="gender">남자</ion-radio>
-            <ion-radio ng-model="gender" ng-value="'female'" name="gender">여자</ion-radio>
-          </div>
-        </div>
-        <!-- <div class="list">
-          <label class="item item-input">
-            <span class="input-label">연락처</span>
-            <input id="phone" type="text" ng-model="phone" placeholder="(-)없이 번호 입력">
-          </label>
-        </div> -->
-        <div class="list">
-          <span class="col">상품유형</span>
-          <div class="list col">
-            <ion-radio ng-model="renewalType" ng-value="'renewal'" name="renewalType">갱신형</ion-radio>
-            <ion-radio ng-model="renewalType" ng-value="'nonRenewal'" name="renewalType">비갱신형  </ion-radio>
-          </div>
-        </div>
-        <div class="list">
-          <label class="item item-input item-select">
-            <span class="input-label">보험기간</span>
-            <select ng-model="insuranceTerm" ng-change="getSizeNames(item.insuranceTerm)">
-              <option value=''>Select</option>
-              <option value='20'>20년만기</option>
-              <option value='80'>80세만기</option>
-            </select>
-          </label>
-          <label class="item item-input item-select">
-            <div class="input-label">납입기간</div>
-            <select ng-model="payTerm" ng-change="getSizeNames(item.payTerm)">
-              <option value=''>Select</option>
-              <option value='20'>20년납</option>
-              <option value='80'>80세납</option>
-            </select>
-          </label>
-        </div>
-        <!--div class="list">
-          <span class="col">개인정보 수집 이용에 동의하십니까?</span>
-           <div class="list col">
-             <ion-radio ng-model="dataAgree" ng-value="'y'" name="dataAgree">동의함</ion-radio>
-             <ion-radio ng-model="dataAgree" ng-value="'n'" name="dataAgree">동의 안함</ion-radio>
-           </div>
-       </div>
-        <div class="list">
-          <span class="col">개인정보 취급 위탁에 동의하십니까?</span>
-           <div class="list col">
-             <ion-radio ng-model="consignmentAgree" ng-value="'y'" name="consignmentAgree">동의함</ion-radio>
-             <ion-radio ng-model="consignmentAgree" ng-value="'n'" name="consignmentAgree">동의 안함</ion-radio>
-           </div>
-       </div-->
-        <!--   <button type="submit" class="button button-full button-positive" ui-sref="pluscancer-step1">내 보험료 알아보기</button> -->
-        <button class="button button-full button-positive" ng-click="submit()" ui-sref="plus-cancer-step2">내 보험료 알아보기</button>
-      </form>
-    </div>
 
+
+    </div>
+    <button class="button button-full button-orange" ng-click="submit()">월 보험료 선택하기</button>
   </ion-content>
 </ion-view>

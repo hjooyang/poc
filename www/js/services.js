@@ -72,4 +72,47 @@ angular.module('starter.services', [])
       };
     }
   }
-});
+})
+  .factory('PlusCancer', function() {
+    var currentProduct = {};
+    var productList = [];
+    var calResult = {};
+    var calInfo = {};
+
+    return {
+      saveCalInfo: function (productType, birth, gender, renewalType, insuranceTerm, payTerm) {
+        calInfo = {
+          productType: productType,
+          birth: birth,
+          gender: gender,
+          renewalType: renewalType,
+          insuranceTerm: insuranceTerm,
+          payTerm: payTerm
+        }
+      },
+      saveCalResult: function (productType, birth, gender, renewalType, insuranceTerm, payTerm) {
+        calResult = {
+          cost: productType,
+          largeCancer: birth,
+          smallCancer: gender,
+          normalCancer: renewalType,
+          breastCancer: insuranceTerm,
+          payTerm: payTerm
+        }
+      },
+      saveProduct: function(product) {
+        productList.push(product);
+      },
+      getCurrentProductInfo: function() {
+        return currentProduct;
+      },
+      getCalResult: function () {
+        return calResult;
+      },
+      getCalInfo: function () {
+        return calInfo;
+      }
+    }
+
+
+  });

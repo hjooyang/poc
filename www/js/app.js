@@ -49,31 +49,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
-  .state('tab.plus-cancer-step1', {
+  .state('plus-cancer-step1', {
     url: '/plus-cancer-step1',
-    views: {
-        'tab-catalog': {
+    //views: {
+    //    'tab-catalog': {
            templateUrl: 'templates/product-plus-cancer-step1.html'
-        }
-      }
+      //  }
+      //}
   })
 
-  .state('tab.plus-cancer-step2', {
+  .state('plus-cancer-step2', {
     url: '/plus-cancer-step2',
-      views: {
-        'tab-catalog': {
+      //views: {
+      //  'tab-catalog': {
           templateUrl: 'templates/product-plus-cancer-step2.html'
-        }
-      }
+      //  }
+      //}
 
   })
-  .state('tab.plus-cancer-step3', {
+  .state('plus-cancer-step3', {
     url: '/plus-cancer-step3',
-      views: {
-        'tab-catalog': {
+      //views: {
+      //  'tab-catalog': {
           templateUrl: 'templates/product-plus-cancer-step3.html'
-        }
-      }
+      //  }
+      //}
   })
 
   .state('tab.cyberwindow', {

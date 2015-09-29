@@ -1,0 +1,58 @@
+<ion-view view-title="STEP.3">
+  <ion-content class="has-tabs-top">
+    <div class="list list-inset">
+      <form ng-submit="submit()" ng-controller="PlusCancerCtrl">
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">성명</span>
+            <input id="name" type="text" ng-model="name">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">주민번호</span>
+            <input id="firstIdn1" type="text" maxlength="6" ng-model="id" placeholder="주민번호 앞 6자리">
+            <span class="form-mid">-</span>
+            <input type="text" id="firstIdn2" type="password" maxlength="7" title="주민번호 뒷 7자리"/>
+          </label>
+        </div>
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">휴대폰</span>
+            <select name="cphone1" id="cphone1">
+              <option value="010">010</option>
+              <option value="010">011</option>
+              <option value="010">016</option>
+            </select>
+            <span class="form-mid"> - </span>
+            <input type="text" name="cphone2" title="휴대폰 번호 중간 4자리" id="cphone2" maxlength="4"/>
+            <span class="form-mid"> - </span>
+            <input type="text" name="cphone3" title="휴대폰 번호 뒷 4자리" id="cphone3" maxlength="4"/>
+          </label>
+        </div>
+
+        <div class="list">
+          <span class="col">운전여부</span>
+          <div class="list col">
+            <ion-radio ng-model="driveCheck" ng-value="'Y'" name="driveCheck">운전</ion-radio>
+            <ion-radio ng-model="driveCheck" ng-value="'N'" name="driveCheck">미운전  </ion-radio>
+          </div>
+        </div>
+
+        <div class="list">
+          <span class="col">계약의 체결 및 이행 등을 위한 동의 (필수사항)</span>
+           <div class="list col">
+             <ion-radio ng-model="dataAgree" ng-value="'y'" name="dataAgree">예</ion-radio>
+             <ion-radio ng-model="dataAgree" ng-value="'n'" name="dataAgree">아니오</ion-radio>
+           </div>
+          <span class="col">상품소개 등 고객서비스를 위한 동의 (선택사항)</span>
+          <div class="list col">
+            <ion-radio ng-model="consignmentAgree" ng-value="'y'" name="consignmentAgree">예</ion-radio>
+            <ion-radio ng-model="consignmentAgree" ng-value="'n'" name="consignmentAgree">아니요</ion-radio>
+          </div>
+       </div>
+        <!--   <button type="submit" class="button button-full button-positive" ui-sref="pluscancer-step1">내 보험료 알아보기</button> -->
+        <button class="button button-full button-orange" ng-click="submit()" ui-sref="plus-cancer-step4">공인인증서 로그인 및 다음 단계 진행</button>
+      </form>
+    </div>
+
+  </ion-content>
+</ion-view>
