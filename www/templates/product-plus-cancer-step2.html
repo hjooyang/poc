@@ -2,7 +2,7 @@
 <ion-content class="" >
   <div class="list list-inset" ng-repeat="product in productLists">
     <div class="list card" >
-      <ion-radio ng-model="selectPrice" ng-value="product.cost">
+      <ion-radio ng-model="selectPrice" ng-value="product.cost" ng-change="selected(product)">
         <div class="item item-price">
          <h5>월 보험료</h5>{{product.cost}}
         </div>
@@ -84,6 +84,8 @@
     </div-->
     </div>
       <button class="button button-full button-orange" ng-click="submit()">월 보험료 선택하기</button>
-    </form>
+  <!--<button class="button button-full button-orange" ng-click="modal.show()">월 보험료 선택하기</button>-->
+
+  </form>
 </ion-content>
 </ion-view>

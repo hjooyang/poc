@@ -130,18 +130,22 @@ angular.module('starter.controllers', [])
       });
 
       PlusCancer.saveCalInfo($scope.productType, $scope.birth, $scope.gender, $scope.renewalType, $scope.insuranceTerm, $scope.payTerm)
-      console.log("save cal infor : ", PlusCancer.getCalInfo());
+      console.log("save cal information in STEP1 : ", PlusCancer.getCalInfo());
       return false;
     }
 
 
   })
-  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state) {
+  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
 
     var socket = io.connect('http://lina4.mybluemix.net');
+    $scope.calInfo = PlusCancer.getCalInfo();
     $scope.type = "plusCancerStep1";
-     $scope.productLists  = [];
-    console.log("save cal infor in step2: ", PlusCancer.getCalInfo());
+    $scope.productLists  = [];
+    $scope.selectedProduct = {};
+
+    //console.log("save cal infor in step2: ", PlusCancer.getCalInfo());
+
 
     $scope.calPlusCancer = function(originalProduct){
       var product2 = {
@@ -155,14 +159,28 @@ angular.module('starter.controllers', [])
       return product2;
     };
 
+    $scope.selected = function (product) {
+      $scope.selecedProduct = product;
+      PlusCancer.saveSelectedProduct(product);
+      console.log("selected product: ", $scope.selecedProduct);
+    }
+
+    $ionicModal.fromTemplateUrl('templates/checkInfoModal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
     $scope.submit = function() {
-      console.log('hi');
-       $ionicPopup.alert({
-              title: 'Success',
-              content: '가입절차로 넘어갑니다.'
-            }).then(function(res) {
-               $state.go('plus-cancer-step3');
-            });
+      console.log('selected', $scope);
+      console.log("submit ::: selected product: ", $scope.selecedProduct);
+      $scope.modal.show();
+       //$ionicPopup.alert({
+       //       title: 'Success',
+       //       content: '가입절차로 넘어갑니다.'
+       //     }).then(function(res) {
+       //        $state.go('plus-cancer-step3');
+       //     });
       return false;
     }
 
@@ -173,6 +191,8 @@ angular.module('starter.controllers', [])
 
             console.log('productLists :: ', $scope.productLists[1]);
     });
+
+
   /*  socket.on('D', function (msg) {
       console.log('received - ', msg);
       console.log(msg.length);

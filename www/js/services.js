@@ -78,6 +78,7 @@ angular.module('starter.services', [])
     var productList = [];
     var calResult = {};
     var calInfo = {};
+    var selectedProduct = {};
 
     return {
       saveCalInfo: function (productType, birth, gender, renewalType, insuranceTerm, payTerm) {
@@ -98,6 +99,16 @@ angular.module('starter.services', [])
           normalCancer: renewalType,
           breastCancer: insuranceTerm,
           payTerm: payTerm
+        }
+      },
+      saveSelectedProduct: function (product) {
+        selectedProduct = {
+          cost: product.productType,
+          largeCancer: product.birth,
+          smallCancer: product.gender,
+          normalCancer: product.renewalType,
+          breastCancer: product.insuranceTerm,
+          payTerm: product.payTerm
         }
       },
       saveProduct: function(product) {

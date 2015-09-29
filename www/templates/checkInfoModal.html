@@ -1,0 +1,33 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">STEP.2 가입 정보 확인</h1>
+    <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="card">
+      <div class="item item-text-wrap">
+        <span>
+                  (무)KDB 다이렉트 암보험 월 {{selectedProduct.cost}} 원
+
+        </span>
+        <span>
+          {{PlusCancer.getCalInfo().insuranceTerm}}형
+        </span>
+      </div>
+    </div>
+    <div class="list">
+      <label class="item item-input">
+
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Last Name</span>
+        <input ng-model="newUser.lastName" type="text">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Email</span>
+        <input ng-model="newUser.email" type="text">
+      </label>
+      <button class="button button-full button-positive" ui-sref="plus-cancer-step3">10분만에 바로 가입</button>
+    </div>
+  </ion-content>
+</ion-modal-view>
