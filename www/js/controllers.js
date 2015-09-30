@@ -106,21 +106,34 @@ angular.module('starter.controllers', [])
       console.log('received - ', msg);
     });
   })
-  .controller('PlusCancerCtrl', function($scope, PlusCancer, Products) {
+  .controller('PlusCancerCtrl', function($scope, $state, PlusCancer, Products) {
 
     var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
     $scope.productType = "plusCancer";
+    //$scope.productType = PlusCancer.produectType;
     $scope.data = {};
+    $scope.productList = [];
 
     $scope.submit = function(data) {
 
       $scope.data = angular.copy(data);
-
       socket.emit('D',data);
 
-      PlusCancer.saveCalInfo($scope.productType, $scope.birth, $scope.gender, $scope.renewalType, $scope.insuranceTerm, $scope.payTerm)
-      console.log("save cal information in STEP1 : ", PlusCancer.getCalInfo());
+      PlusCancer.saveData(data);
+      console.log("save cal information in STEP1 : ", PlusCancer.getData());
+
+      socket.on('D', function (data) {
+        console.log('received :: ', data);
+        //for (var i=0; i<data.length; i++)
+        $scope.productList.push(data);
+
+
+        console.log( 'hey',$scope.productList);
+        PlusCancer.productList = $scope.productList;
+
+        $state.go('plus-cancer-step2');
+      });
       return false;
     }
 
@@ -129,15 +142,17 @@ angular.module('starter.controllers', [])
   .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
 
     var socket = io.connect('http://lina-poc-prod.mybluemix.net');
-    $scope.calInfo = PlusCancer.getCalInfo();
+    //$scope.calInfo = PlusCancer.getCalInfo();
     $scope.type = "plusCancerStep1";
-    $scope.productLists  = [];
+    $scope.productList  = [];
     $scope.selectedProduct = {};
+
+    $scope.productList = PlusCancer.getProductList();
 
     //console.log("save cal infor in step2: ", PlusCancer.getCalInfo());
 
 
-    $scope.calPlusCancer = function(originalProduct){
+   /* $scope.calPlusCancer = function(originalProduct){
       var product2 = {
         "cost" : originalProduct.cost/2,
         "largeCancer" : originalProduct.largeCancer*2,
@@ -147,7 +162,7 @@ angular.module('starter.controllers', [])
       };
 
       return product2;
-    };
+    };*/
 
     $scope.selected = function (product) {
       $scope.selecedProduct = product;
@@ -174,13 +189,13 @@ angular.module('starter.controllers', [])
       return false;
     }
 
-    socket.on('D', function (data) {
-            console.log('received :: ', data);
-            $scope.productLists.push(data);
-            $scope.productLists.push($scope.calPlusCancer(data));
-
-            console.log('productLists :: ', $scope.productLists[1]);
-    });
+    //socket.on('D', function (data) {
+    //        console.log('received :: ', data);
+    //        $scope.productLists.push(data);
+    //        $scope.productLists.push($scope.calPlusCancer(data));
+    //
+    //        console.log('productLists :: ', $scope.productLists[1]);
+    //});
 
 
   /*  socket.on('D', function (msg) {

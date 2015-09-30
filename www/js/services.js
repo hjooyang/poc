@@ -74,24 +74,18 @@ angular.module('starter.services', [])
   }
 })
   .factory('PlusCancer', function() {
+    var productType = 'PlusCancer';
     var currentProduct = {};
     var productList = [];
     var calResult = {};
-    var calInfo = {};
+    var calData = {};
     var selectedProduct = {};
 
     return {
-      saveCalInfo: function (productType, birth, gender, renewalType, insuranceTerm, payTerm) {
-        calInfo = {
-          productType: productType,
-          birth: birth,
-          gender: gender,
-          renewalType: renewalType,
-          insuranceTerm: insuranceTerm,
-          payTerm: payTerm
-        }
+      saveData: function (data) {
+        calData = data;
       },
-      saveCalResult: function (productType, birth, gender, renewalType, insuranceTerm, payTerm) {
+      saveResult: function (productType, birth, gender, renewalType, insuranceTerm, payTerm) {
         calResult = {
           cost: productType,
           largeCancer: birth,
@@ -111,6 +105,9 @@ angular.module('starter.services', [])
           payTerm: product.payTerm
         }
       },
+      getProductList: function () {
+        return productList;
+      },
       saveProduct: function(product) {
         productList.push(product);
       },
@@ -120,8 +117,8 @@ angular.module('starter.services', [])
       getCalResult: function () {
         return calResult;
       },
-      getCalInfo: function () {
-        return calInfo;
+      getData: function () {
+        return calData;
       }
     }
 
