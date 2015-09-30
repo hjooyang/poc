@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
   };
   $scope.responses = [];
 
-  var socket = io.connect('http://lina4.mybluemix.net');
+  var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
   $scope.submit = function() {
     console.log('scope - ', $scope);
@@ -63,7 +63,7 @@ angular.module('starter.controllers', [])
     };
     $scope.responses = [];
     $scope.type = "noSmoking";
-    var socket = io.connect('http://lina4.mybluemix.net');
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
     $scope.submit = function() {
       console.log('type - ', $scope.type);
@@ -83,7 +83,7 @@ angular.module('starter.controllers', [])
   })
   .controller('TeethCtrl', function($scope) {
 
-    var socket = io.connect('http://lina4.mybluemix.net');
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
     $scope.type = "teeth";
 
     $scope.submit = function() {
@@ -108,7 +108,7 @@ angular.module('starter.controllers', [])
   })
   .controller('PlusCancerCtrl', function($scope, PlusCancer, Products) {
 
-    var socket = io.connect('http://lina4.mybluemix.net');
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
     $scope.productType = "plusCancer";
 
@@ -138,7 +138,7 @@ angular.module('starter.controllers', [])
   })
   .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
 
-    var socket = io.connect('http://lina4.mybluemix.net');
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
     $scope.calInfo = PlusCancer.getCalInfo();
     $scope.type = "plusCancerStep1";
     $scope.productLists  = [];
