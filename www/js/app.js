@@ -9,6 +9,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+    MQA.startNewSession(
+   {
+      mode: "QA",
+      //or mode: "MARKET" for production mode
+      android: {
+         appKey: "1g004d345d6cc329283eb4a73a55d8a575a34d49dcg0g1g2b980ced" ,
+         notificationsEnabled: true
+        }
+      //   ,
+      // ios: {
+      //    appKey: "your_MQA_iOS_appKey" ,
+      //    screenShotsFromGallery: true,
+      //      }
+    },
+       {
+      success: function () {console.log("Session Started successfully");},
+      error: function (string) { console.log("Session error" + string);}
+    }
+   );
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
