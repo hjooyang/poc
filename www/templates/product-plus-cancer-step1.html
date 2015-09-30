@@ -6,10 +6,6 @@
 
       <form ng-submit="submit()" ng-controller="PlusCancerCtrl">
         <div class="list">
-        <!-- <label class="item item-input">
-          <span class="input-label">이름</span>
-          <input id="name" type="text" ng-model="name">
-        </label> -->
         <label class="item item-input">
           <span class="input-label">생년월일</span>
           <input id="birth" type="date" ng-model="birth" placeholder="주민번호 앞자리">
@@ -22,12 +18,6 @@
             <ion-radio ng-model="gender" ng-value="'female'" name="gender">여자</ion-radio>
           </div>
         </div>
-        <!-- <div class="list">
-          <label class="item item-input">
-            <span class="input-label">연락처</span>
-            <input id="phone" type="text" ng-model="phone" placeholder="(-)없이 번호 입력">
-          </label>
-        </div> -->
         <div class="list">
            <span class="col">상품유형</span>
             <div class="list col">
@@ -53,7 +43,6 @@
               </select>
             </label>
         </div>
-      <!--   <button type="submit" class="button button-full button-positive" ui-sref="pluscancer-step1">내 보험료 알아보기</button> -->
         <button class="button button-full button-orange" ng-click="submit()" ui-sref="plus-cancer-step2">내 보험료 알아보기</button>
       </form>
     </div>
