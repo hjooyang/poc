@@ -10,16 +10,17 @@
           <span class="input-label">이름</span>
           <input id="name" type="text" ng-model="name">
         </label> -->
+          <input ng-model="data.productType" value="'PlusCancer'" hidden ng-init="data.productType='plusCancer'"/>
         <label class="item item-input">
           <span class="input-label">생년월일</span>
-          <input id="birth" type="date" ng-model="birth" placeholder="주민번호 앞자리">
+          <input id="birth" type="date" ng-model="data.birth" placeholder="주민번호 앞자리">
         </label>
         </div>
         <div class="list">
           <span class="col">성별</span>
           <div class="list col">
-            <ion-radio ng-model="gender" ng-value="'male'" name="gender">남자</ion-radio>
-            <ion-radio ng-model="gender" ng-value="'female'" name="gender">여자</ion-radio>
+            <ion-radio ng-model="data.gender" ng-value="'male'" name="gender">남자</ion-radio>
+            <ion-radio ng-model="data.gender" ng-value="'female'" name="gender">여자</ion-radio>
           </div>
         </div>
         <!-- <div class="list">
@@ -31,14 +32,14 @@
         <div class="list">
            <span class="col">상품유형</span>
             <div class="list col">
-              <ion-radio ng-model="renewalType" ng-value="'renewal'" name="renewalType">갱신형</ion-radio>
-              <ion-radio ng-model="renewalType" ng-value="'nonRenewal'" name="renewalType">비갱신형  </ion-radio>
+              <ion-radio ng-model="data.renewalType" ng-value="'renewal'" name="renewalType">갱신형</ion-radio>
+              <ion-radio ng-model="data.renewalType" ng-value="'nonRenewal'" name="renewalType">비갱신형  </ion-radio>
             </div>
         </div>
         <div class="list">
             <label class="item item-input item-select">
               <span class="input-label">보험기간</span>
-              <select ng-model="insuranceTerm" ng-change="getSizeNames(item.insuranceTerm)">
+              <select ng-model="data.insuranceTerm" ng-change="getSizeNames(item.insuranceTerm)">
                 <option value=''>Select</option>
                  <option value='20'>20년만기</option>
                   <option value='80'>80세만기</option>
@@ -46,7 +47,7 @@
             </label>
             <label class="item item-input item-select">
               <div class="input-label">납입기간</div>
-              <select ng-model="payTerm" ng-change="getSizeNames(item.payTerm)">
+              <select ng-model="data.payTerm" ng-change="getSizeNames(item.payTerm)">
                 <option value=''>Select</option>
                  <option value='20'>20년납</option>
                   <option value='80'>80세납</option>
@@ -54,7 +55,7 @@
             </label>
         </div>
       <!--   <button type="submit" class="button button-full button-positive" ui-sref="pluscancer-step1">내 보험료 알아보기</button> -->
-        <button class="button button-full button-orange" ng-click="submit()" ui-sref="plus-cancer-step2">내 보험료 알아보기</button>
+        <button class="button button-full button-orange" ng-click="submit(data)" ui-sref="plus-cancer-step2">내 보험료 알아보기</button>
       </form>
     </div>
 
