@@ -111,15 +111,21 @@ angular.module('starter.controllers', [])
     var socket = io.connect('http://lina4.mybluemix.net');
 
     $scope.productType = "plusCancer";
+    $scope.data = {};
 
-    $scope.submit = function() {
-      console.log('type :: ', $scope.productType);
-      console.log('birth :: ', $scope.birth);
-      console.log('gender :: ', $scope.gender);
-      console.log('renewalType :: ', $scope.renewalType);
-      console.log('insuranceTerm :: ', $scope.insuranceTerm);
-      console.log('payTerm :: ', $scope.payTerm);
+    $scope.submit = function(data) {
+      $scope.data = angular.copy(data);
+      socket.emit('D',data);
 
+      socket.on('D', function (data) {
+              console.log('received :: ', data);
+              // $scope.productLists.push(data);
+              // $scope.productLists.push($scope.calPlusCancer(data));
+
+              // console.log('productLists :: ', $scope.productLists[1]);
+      });
+      
+/*
       socket.emit('D',{
         productType: $scope.productType,
         birth: $scope.birth,
@@ -128,6 +134,8 @@ angular.module('starter.controllers', [])
         insuranceTerm: $scope.insuranceTerm,
         payTerm: $scope.payTerm
       });
+*/
+   
 
       PlusCancer.saveCalInfo($scope.productType, $scope.birth, $scope.gender, $scope.renewalType, $scope.insuranceTerm, $scope.payTerm)
       console.log("save cal information in STEP1 : ", PlusCancer.getCalInfo());
