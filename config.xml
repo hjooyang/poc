@@ -10,6 +10,9 @@
   <content src="index.html"/>
   <access origin="http://lina4.mybluemix.net *"/>
   <allow-navigation href="http://lina4.mybluemix.net/*" />
+  <!-- <allow-navigation href="http://*/*" /> -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *"/>
+
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
