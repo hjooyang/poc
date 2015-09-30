@@ -14,8 +14,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     ibmbluemix = IBMBluemix.hybrid;
     ibmpush = IBMPush.hybrid;
 
-
-
     var setup  = {
         applicationId: "5f57fdb9-1bcc-4801-888e-ec737c6080b4",
         applicationRoute: "http://lina4.mybluemix.net",
