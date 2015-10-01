@@ -43,7 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // Use the Push Service
 
     }).catch(function(err){
-      ibmbluemix.getLogger().error("Error initializing the Push SDK");  
+      ibmbluemix.getLogger().error("Error initializing the Push SDK");
     });
     /*
     var ibmbluemix, ibmpush;
@@ -58,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       console.log("initPush called---------------------------------");
      ibmbluemix = IBMBluemix.hybrid;
      ibmpush = IBMPush.hybrid;
-     
+
      console.log("calling bluemix initialize with values--------------------------------");
      ibmbluemix.initialize(values).then(function(status) {
         console.log("IBM Bluemix Initialized", status);
@@ -71,7 +71,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         return push.registerDevice("LisaTest","Lisa123","pushReceived");
      }, function (err) {
         console.error("IBM Bluemix Push initialized failed" , err);
-     }); 
+     });
     }
 
     initPush();*/
@@ -136,30 +136,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
   .state('plus-cancer-step1', {
     url: '/plus-cancer-step1',
-    //views: {
-    //    'tab-catalog': {
            templateUrl: 'templates/product-plus-cancer-step1.html'
-      //  }
-      //}
   })
 
   .state('plus-cancer-step2', {
     url: '/plus-cancer-step2',
-      //views: {
-      //  'tab-catalog': {
           templateUrl: 'templates/product-plus-cancer-step2.html'
-      //  }
-      //}
-
   })
   .state('plus-cancer-step3', {
     url: '/plus-cancer-step3',
-      //views: {
-      //  'tab-catalog': {
           templateUrl: 'templates/product-plus-cancer-step3.html'
-      //  }
-      //}
   })
+    .state('plus-cancer-step4', {
+      url: '/plus-cancer-step4',
+      templateUrl: 'templates/product-plus-cancer-step4.html'
+    })
 
   .state('tab.cyberwindow', {
       url: '/cyberwindow',

@@ -77,6 +77,7 @@ angular.module('starter.services', [])
   var data = {};
   var resultList= [];
   var selectedProduct = {};
+    var info = {};
 
 
   return {
@@ -97,6 +98,12 @@ angular.module('starter.services', [])
     },
     getData: function() {
       return data;
+    },
+    getInfo: function () {
+      return info;
+    },
+    setInfo: function (userInfo) {
+      info = userInfo;
     }
   };
 });
@@ -113,7 +120,7 @@ angular.module('starter.services', [])
       saveData: function (data) {
         calData = data;
       },
-      
+
       // saveSelectedProduct: function (product) {
       //   selectedProduct = {
       //     cost: product.productType,

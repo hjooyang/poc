@@ -31,33 +31,122 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+  .controller('PlusCancerCtrl', function($scope, $state, PlusCancer, Products) {
 
-.controller('HealthcareCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-  $scope.responses = [];
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
-  var socket = io.connect('http://lina-poc-prod.mybluemix.net');
+    $scope.submit = function(data) {
+      socket.emit('D',data);
+      PlusCancer.data = data;
+      console.log("PlusCancer.data :: ", PlusCancer.data);
 
-  $scope.submit = function() {
-    console.log('scope - ', $scope);
-    console.log('birth - ', $scope.birth);
-    console.log('gender - ', $scope.gender);
+      $state.go('plus-cancer-step2');
+      return false;
+    }
+  })
+  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
+
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
+    $scope.results = [];
+    $scope.data = PlusCancer.getData();
+    $scope.product = {};
+
+    socket.on('D', function (result) {
+            console.log('D:: addResult :: ', result);
+            PlusCancer.addResult(result);
+            console.log('PlusCancer.addResult :: ', PlusCancer.getResultList());
+            // PlusCancer.saveProduct.push(result);
+            $scope.results = PlusCancer.getResultList();
+            console.log('$scope.results :: ', $scope.results);
+      });
+
+
+    $scope.selected = function (product) {
+      console.log("selected product ", product);
+      PlusCancer.saveProduct(product);
+      console.log("PlusCancer.getProduct ", PlusCancer.getProduct());
+    }
+
+    $ionicModal.fromTemplateUrl('templates/checkInfoModal.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    $scope.submit = function() {
+
+      // $scope.modal.show();
+       $ionicPopup.alert({
+             title: 'Success',
+             content: '가입절차로 넘어갑니다.'
+           }).then(function(res) {
+              $state.go('plus-cancer-step3');
+           });
+      return false;
+    }
+
+    socket.on('D', function (data) {
+            console.log('received :: ', data);
+            $scope.productLists.push(data);
+            $scope.productLists.push($scope.calPlusCancer(data));
+
+            console.log('productLists :: ', $scope.productLists[1]);
+    });
+
+
+  /*  socket.on('D', function (msg) {
+      console.log('received - ', msg);
+      console.log(msg.length);
+      // for (int i =0; i< msg.length; i++) {
+
+      // }
+    });*/
+  })
+  .controller('PlusCancerStep3Ctrl', function ($scope, $state, PlusCancer) {
+
+    $scope.submit = function(info) {
+      PlusCancer.setInfo(info);
+      $scope.info = info;
+
+      $state.go("plus-cancer-step4");
+    }
+  })
+  .controller('SidePolicyPageCtrl', function ($scope) {
+
+  })
+  .controller('ModalCtrl', function($scope, PlusCancer) {
+    // $scope.product = PlusCancer.;
+    console.log("modal controller ", $scope.data);
+
+  })
+
+  .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+    $scope.chat = Chats.get($stateParams.chatId);
+  })
+
+  .controller('HealthcareCtrl', function($scope) {
+    $scope.settings = {
+      enableFriends: true
+    };
+    $scope.responses = [];
+
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
+
+    $scope.submit = function() {
+      console.log('scope - ', $scope);
+      console.log('birth - ', $scope.birth);
+      console.log('gender - ', $scope.gender);
 
       socket.emit('D',{ birth: $scope.birth,
-                         gender: $scope.gender
+        gender: $scope.gender
       });
       return false;
-  }
-   socket.on('D', function (msg) {
-           console.log('received - ', msg);
-   });
-})
-.controller('NosmokingCtrl', function($scope) {
+    }
+    socket.on('D', function (msg) {
+      console.log('received - ', msg);
+    });
+  })
+  .controller('NosmokingCtrl', function($scope) {
     $scope.settings = {
       enableFriends: true
     };
@@ -105,85 +194,6 @@ angular.module('starter.controllers', [])
     socket.on('D', function (msg) {
       console.log('received - ', msg);
     });
-  })
-  .controller('PlusCancerCtrl', function($scope, $state, PlusCancer, Products) {
-
-    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
-
-    $scope.submit = function(data) {
-      socket.emit('D',data);
-      PlusCancer.data = data;
-      console.log("PlusCancer.data :: ", PlusCancer.data);
-
-      $state.go('plus-cancer-step2');
-      return false;
-    }
-  })
-  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
-
-    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
-    $scope.results = [];
-    $scope.data = PlusCancer.getData();
-    $scope.product = {};
-
-    socket.on('D', function (result) {
-            console.log('D:: addResult :: ', result);
-            PlusCancer.addResult(result);
-            console.log('PlusCancer.addResult :: ', PlusCancer.getResultList());
-            // PlusCancer.saveProduct.push(result);
-            $scope.results = PlusCancer.getResultList();
-            console.log('$scope.results :: ', $scope.results);
-      });
-    
-
-    $scope.selected = function (product) {
-      console.log("selected product ", product);
-      PlusCancer.saveProduct(product);
-      console.log("PlusCancer.getProduct ", PlusCancer.getProduct());
-    }
-
-    $ionicModal.fromTemplateUrl('templates/checkInfoModal.html', {
-      scope: $scope
-    }).then(function(modal) {
-      $scope.modal = modal;
-    });
-
-    $scope.submit = function() {
-     
-      // $scope.modal.show();
-       $ionicPopup.alert({
-             title: 'Success',
-             content: '가입절차로 넘어갑니다.'
-           }).then(function(res) {
-              $state.go('plus-cancer-step3');
-           });
-      return false;
-    }
-
-    //socket.on('D', function (data) {
-    //        console.log('received :: ', data);
-    //        $scope.productLists.push(data);
-    //        $scope.productLists.push($scope.calPlusCancer(data));
-    //
-    //        console.log('productLists :: ', $scope.productLists[1]);
-    //});
-
-
-  /*  socket.on('D', function (msg) {
-      console.log('received - ', msg);
-      console.log(msg.length);
-      // for (int i =0; i< msg.length; i++) {
-
-      // }
-    });*/
-  })
-  .controller('SidePolicyPageCtrl', function ($scope) {
-
-  })
-  .controller('ModalCtrl', function($scope, PlusCancer) {
-    // $scope.product = PlusCancer.;
-    console.log("modal controller ", $scope.data);
-
   });
 
 

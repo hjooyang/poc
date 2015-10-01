@@ -13,3 +13,7 @@
   color: white;
   text-decoration: none;
 }
+
+ul {
+  list-style-type: disc;
+}

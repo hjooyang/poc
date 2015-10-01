@@ -1,5 +1,81 @@
 <ion-view view-title="STEP.3">
-  <ion-content class="has-tabs-top">
+  <!--<ion-content class="has-tabs-top">-->
+    <ion-content>
+
+    <div class="list list-inset">
+      <div class="card">
+        <div class="item item-text-wrap">
+       <h1>계약전 알릴 의무작성</h1>
+        <ul>
+          <li>상법 규정에 따라 고객님의 <b>건강상태, 직업 등과 관련하여 회사에 알려야 할 사항</b>이 사실임을 확인받기 위하여 작성하는 문서입니다. </li>
+          <li>피보험자에 관한 다음 각 사항은 회사가 보험계약의 청약을 인수하는데 필요한 자료이므로 <b>보험계약자 및 피보험자는 사실대로 알려야 합니다.</b></li>
+        </ul>
+        </div>
+      </div>
+    </div>
+      <div class="list list-inset">
+        <div class="card">
+          <div class="item item-text-wrap">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                <div class=" row positive">
+                  [운전] &nbsp;<i class="icon ion-android-car"></i>&nbsp;
+                </div>
+                <div class="row"><b>현재 운전을 하고 있습니까?</b></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="list col">
+                  <ion-radio ng-model="driveCheck" ng-value="'Y'" name="driveCheck">운전</ion-radio>
+                  <ion-radio ng-model="driveCheck" ng-value="'N'" name="driveCheck">미운전  </ion-radio>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+        <div class="item item-text-wrap">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <div class=" row positive">
+                  [건강상태] &nbsp;<i class="icon ion-android-car"></i>&nbsp;
+                </div>
+                <div class="row"><b>최근 3개월 이내에 의사로부터 진찰 또는 검사를 통하여 다음과 같은 의료행위 1.질병확정진단 2.질병 의심소견 3.치료 4.입원 5.수술(제왕절개포함) 6.투약 받은 사실이 있습니까?</b></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="list col">
+                <ion-radio ng-model="healthCheck1" ng-value="'Y'" name="healthCheck">예</ion-radio>
+                <ion-radio ng-model="healthCheck1" ng-value="'N'" name="healthCheck">아니요  </ion-radio>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card">
+          <div class="item item-text-wrap">
+            <div class="row">
+              <div class="col">
+                <div class="col">
+                  <label class="item item-input">
+                    <span class="input-label">키</span>
+                    <input type="number" ng-model="height"/>cm
+                </label>
+                </div>
+
+              </div>
+              <div class="col">
+                <div class="list col">
+                  <ion-radio ng-model="drinkCheck" ng-value="'Y'" name="drinkCheck">예</ion-radio>
+                  <ion-radio ng-model="drinkCheck" ng-value="'N'" name="drinkCheck">아니요  </ion-radio>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="list list-inset">
       <form ng-submit="submit()" ng-controller="PlusCancerCtrl">
         <div class="list">
@@ -50,7 +126,7 @@
           </div>
        </div>
         <!--   <button type="submit" class="button button-full button-positive" ui-sref="pluscancer-step1">내 보험료 알아보기</button> -->
-        <button class="button button-full button-orange" ng-click="submit()" ui-sref="plus-cancer-step4">공인인증서 로그인 및 다음 단계 진행</button>
+        <button class="button button-full button-orange" ng-click="submit(info)" ui-sref="plus-cancer-step4">공인인증서 로그인 및 다음 단계 진행</button>
       </form>
     </div>
 
