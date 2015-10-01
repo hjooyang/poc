@@ -73,6 +73,22 @@ angular.module('starter.services', [])
     }
   }
 })
+.factory('PlusCancer', function () {
+  var data = {};
+  var resultList= [];
+
+
+  return {
+    addResult: function(result) {
+      resultList.push(result);
+    },
+    getResultList: function() {
+      return resultList;
+    }
+
+  };
+});
+/*
   .factory('PlusCancer', function() {
     var productType = 'PlusCancer';
     var currentProduct = {};
@@ -85,30 +101,23 @@ angular.module('starter.services', [])
       saveData: function (data) {
         calData = data;
       },
-      saveResult: function (productType, birth, gender, renewalType, insuranceTerm, payTerm) {
-        calResult = {
-          cost: productType,
-          largeCancer: birth,
-          smallCancer: gender,
-          normalCancer: renewalType,
-          breastCancer: insuranceTerm,
-          payTerm: payTerm
-        }
-      },
-      saveSelectedProduct: function (product) {
-        selectedProduct = {
-          cost: product.productType,
-          largeCancer: product.birth,
-          smallCancer: product.gender,
-          normalCancer: product.renewalType,
-          breastCancer: product.insuranceTerm,
-          payTerm: product.payTerm
-        }
-      },
+      
+      // saveSelectedProduct: function (product) {
+      //   selectedProduct = {
+      //     cost: product.productType,
+      //     largeCancer: product.birth,
+      //     smallCancer: product.gender,
+      //     normalCancer: product.renewalType,
+      //     breastCancer: product.insuranceTerm,
+      //     payTerm: product.payTerm
+      //   }
+      // },
       getProductList: function () {
+        console.log("in service ", productList);
         return productList;
       },
       saveProduct: function(product) {
+        console.log("saveProduct ", product);
         productList.push(product);
       },
       getCurrentProductInfo: function() {
@@ -124,3 +133,4 @@ angular.module('starter.services', [])
 
 
   });
+*/

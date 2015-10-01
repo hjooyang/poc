@@ -110,58 +110,15 @@ angular.module('starter.controllers', [])
 
     var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
-    $scope.productType = "plusCancer";
-
-    $scope.data = {};
-
-    $scope.submit = function(data) {
-      $scope.data = angular.copy(data);
-      socket.emit('D',data);
-
-      socket.on('D', function (data) {
-              console.log('received :: ', data);
-              // $scope.productLists.push(data);
-              // $scope.productLists.push($scope.calPlusCancer(data));
-
-              // console.log('productLists :: ', $scope.productLists[1]);
-      });
-      
-/*
-      socket.emit('D',{
-        productType: $scope.productType,
-        birth: $scope.birth,
-        gender: $scope.gender,
-        renewalType: $scope.renewalType,
-        insuranceTerm: $scope.insuranceTerm,
-        payTerm: $scope.payTerm
-      });
-*/
-   /*
-=======
-    //$scope.productType = PlusCancer.produectType;
-    $scope.data = {};
-    $scope.productList = [];
+    // $scope.productType = "plusCancer";
+    // $scope.data = {};
 
     $scope.submit = function(data) {
-
-      $scope.data = angular.copy(data);
       socket.emit('D',data);
+      PlusCancer.data = data;
+      console.log("PlusCancer.data :: ", PlusCancer.data);
 
-      PlusCancer.saveData(data);
-      console.log("save cal information in STEP1 : ", PlusCancer.getData());
-
-      socket.on('D', function (data) {
-        console.log('received :: ', data);
-        //for (var i=0; i<data.length; i++)
-        $scope.productList.push(data);
->>>>>>> 7d338e412720d678cb9ae97d2a0e68557d36b7e5
-*/
-
-        console.log( 'hey',$scope.productList);
-        PlusCancer.productList = $scope.productList;
-
-        $state.go('plus-cancer-step2');
-      });
+      $state.go('plus-cancer-step2');
       return false;
     }
 
@@ -170,12 +127,31 @@ angular.module('starter.controllers', [])
   .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
 
     var socket = io.connect('http://lina-poc-prod.mybluemix.net');
-    //$scope.calInfo = PlusCancer.getCalInfo();
-    $scope.type = "plusCancerStep1";
-    $scope.productList  = [];
-    $scope.selectedProduct = {};
+    var results = [];
+    socket.on('D', function (result) {
+            console.log('D:: addResult :: ', result);
+            PlusCancer.addResult(result);
+            console.log('PlusCancer.addResult :: ', PlusCancer.getResultList());
+            // PlusCancer.saveProduct.push(result);
+            $scope.results = PlusCancer.getResultList();
+            console.log('$scope.results :: ', $scope.results);
 
-    $scope.productList = PlusCancer.getProductList();
+        // $state.go('plus-cancer-step2');
+      });
+    //$scope.calInfo = PlusCancer.getCalInfo();
+     // $scope.test = {hi: 123};
+    // $scope.productList = PlusCancer.productList;
+
+    // $scope.data = {};
+
+    // // $scope.type = "plusCancerStep1";
+    // $scope.productList= PlusCancer.getProductList();
+    // // $scope.productList  = [{cost: 15360, largeCancer: "3500", smallCancer: "250", normalCancer: "2500", breastCancer: "500"}];
+    // console.log("productList, ", $scope.productList[0]);
+    // $scope.selectedProduct = {};
+
+    // $scope.items = [{cost: 153620, largeCancer: "3500", smallCancer: "250", normalCancer: "2500", breastCancer: "500"}];
+        // $scope.productList = PlusCancer.getProductList();
 
     //console.log("save cal infor in step2: ", PlusCancer.getCalInfo());
 

@@ -3,16 +3,14 @@
 
     <div class="list list-inset">
       <h4>생년월일만으로 보험료 계산해 보세요.</h4>
-      <form ng-submit="submit()" ng-controller="PlusCancerCtrl">
+      <form ng-submit ng-controller="PlusCancerCtrl">
         <div class="list">
-<<<<<<< HEAD
-=======
+
         <!-- <label class="item item-input">
           <span class="input-label">이름</span>
           <input id="name" type="text" ng-model="name">
         </label> -->
           <input ng-model="data.productType" value="'PlusCancer'" hidden ng-init="data.productType='plusCancer'"/>
->>>>>>> 7d338e412720d678cb9ae97d2a0e68557d36b7e5
         <label class="item item-input">
           <span class="input-label">생년월일</span>
           <input id="birth" type="date" ng-model="data.birth" placeholder="주민번호 앞자리">
