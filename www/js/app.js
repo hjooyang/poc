@@ -80,7 +80,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       mode: "QA",
       //or mode: "MARKET" for production mode
       android: {
-         appKey: "1g004d345d6cc329283eb4a73a55d8a575a34d49dcg0g1g2b980ced" ,
+         appKey: "1g1bd27c2ffb89c79f867f766e678caca72aad08c2g0g1g48400dc8" ,
          notificationsEnabled: true
         }
       //   ,
