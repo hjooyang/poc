@@ -1,10 +1,10 @@
-<ion-view view-title="STEP.2 월 보험료 선택 " ng-controller="PlusCancerStep2Ctrl" >
+<ion-view view-title="STEP.2 월 보험료 선택 " ng-controller="PlusCancerCtrl" >
 <ion-content class="" >
-  <div class="list list-inset" ng-repeat="product in productLists">
+  <div class="list list-inset" >
     <div class="list card" >
-      <ion-radio ng-model="selectPrice" ng-value="product.cost" ng-change="selected(product)">
+      <ion-radio ng-model="selectPrice" ng-value="product.cost" ng-change="selected(p)">
         <div class="item item-price">
-         <h5>월 보험료</h5>{{product.cost}}
+         <h5>월 보험료</h5>{{p.cost}}
         </div>
         <div class="item item-price-detail">
           <div class="col">
