@@ -76,6 +76,7 @@ angular.module('starter.services', [])
 .factory('PlusCancer', function () {
   var data = {};
   var resultList= [];
+  var selectedProduct = {};
 
 
   return {
@@ -84,8 +85,19 @@ angular.module('starter.services', [])
     },
     getResultList: function() {
       return resultList;
+    },
+    saveProduct: function(product) {
+      selectedProduct = product;
+    },
+    getProduct: function() {
+      return selectedProduct;
+    },
+    saveData: function(inputData) {
+      data = inputData;
+    },
+    getData: function() {
+      return data;
     }
-
   };
 });
 /*

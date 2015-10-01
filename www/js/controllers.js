@@ -110,9 +110,6 @@ angular.module('starter.controllers', [])
 
     var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
-    // $scope.productType = "plusCancer";
-    // $scope.data = {};
-
     $scope.submit = function(data) {
       socket.emit('D',data);
       PlusCancer.data = data;
@@ -121,13 +118,14 @@ angular.module('starter.controllers', [])
       $state.go('plus-cancer-step2');
       return false;
     }
-
-
   })
   .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
 
     var socket = io.connect('http://lina-poc-prod.mybluemix.net');
-    var results = [];
+    $scope.results = [];
+    $scope.data = PlusCancer.getData();
+    $scope.product = {};
+
     socket.on('D', function (result) {
             console.log('D:: addResult :: ', result);
             PlusCancer.addResult(result);
@@ -135,43 +133,13 @@ angular.module('starter.controllers', [])
             // PlusCancer.saveProduct.push(result);
             $scope.results = PlusCancer.getResultList();
             console.log('$scope.results :: ', $scope.results);
-
-        // $state.go('plus-cancer-step2');
       });
-    //$scope.calInfo = PlusCancer.getCalInfo();
-     // $scope.test = {hi: 123};
-    // $scope.productList = PlusCancer.productList;
-
-    // $scope.data = {};
-
-    // // $scope.type = "plusCancerStep1";
-    // $scope.productList= PlusCancer.getProductList();
-    // // $scope.productList  = [{cost: 15360, largeCancer: "3500", smallCancer: "250", normalCancer: "2500", breastCancer: "500"}];
-    // console.log("productList, ", $scope.productList[0]);
-    // $scope.selectedProduct = {};
-
-    // $scope.items = [{cost: 153620, largeCancer: "3500", smallCancer: "250", normalCancer: "2500", breastCancer: "500"}];
-        // $scope.productList = PlusCancer.getProductList();
-
-    //console.log("save cal infor in step2: ", PlusCancer.getCalInfo());
-
-
-   /* $scope.calPlusCancer = function(originalProduct){
-      var product2 = {
-        "cost" : originalProduct.cost/2,
-        "largeCancer" : originalProduct.largeCancer*2,
-        "smallCancer" : originalProduct.smallCancer*2,
-        "normalCancer" : originalProduct.normalCancer*2,
-        "breastCancer" : originalProduct.breastCancer*2
-      };
-
-      return product2;
-    };*/
+    
 
     $scope.selected = function (product) {
-      $scope.selecedProduct = product;
-      PlusCancer.saveSelectedProduct(product);
-      console.log("selected product: ", $scope.selecedProduct);
+      console.log("selected product ", product);
+      PlusCancer.saveProduct(product);
+      console.log("PlusCancer.getProduct ", PlusCancer.getProduct());
     }
 
     $ionicModal.fromTemplateUrl('templates/checkInfoModal.html', {
@@ -181,15 +149,14 @@ angular.module('starter.controllers', [])
     });
 
     $scope.submit = function() {
-      console.log('selected', $scope);
-      console.log("submit ::: selected product: ", $scope.selecedProduct);
-      $scope.modal.show();
-       //$ionicPopup.alert({
-       //       title: 'Success',
-       //       content: '가입절차로 넘어갑니다.'
-       //     }).then(function(res) {
-       //        $state.go('plus-cancer-step3');
-       //     });
+     
+      // $scope.modal.show();
+       $ionicPopup.alert({
+             title: 'Success',
+             content: '가입절차로 넘어갑니다.'
+           }).then(function(res) {
+              $state.go('plus-cancer-step3');
+           });
       return false;
     }
 
@@ -211,6 +178,11 @@ angular.module('starter.controllers', [])
     });*/
   })
   .controller('SidePolicyPageCtrl', function ($scope) {
+
+  })
+  .controller('ModalCtrl', function($scope, PlusCancer) {
+    // $scope.product = PlusCancer.;
+    console.log("modal controller ", $scope.data);
 
   });
 
