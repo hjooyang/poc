@@ -1,0 +1,33 @@
+<ion-view view-title="STEP.5 청약문서 확인 및 보험료 납부">
+  <!--<ion-content class="has-tabs-top">-->
+    <ion-content>
+    <form ng-controller="PlusCancerStep5Ctrl">
+    <div class="card">
+      <div class="item item-divider">
+        <b>청약문서 확인 및 보험료 납부 </b>
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col col-60 col-center">
+            납입방법 선택
+          </div>
+          <div class="list col">
+            <ion-radio class="text-center" ng-model="notice.automaticWD" ng-value="'automaticWD'" name="driveCheck">자동이체</ion-radio>
+            <ion-radio class="text-center" ng-model="notice.creditCard" ng-value="'creditCard'" name="driveCheck">신용카드</ion-radio>
+          </div>
+        </div>
+      </div>
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col col-60 col-center">
+            예금주
+          </div>
+          <div class="col">
+            <input type="text" ng-model="notice.depositor"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </ion-content>
+</ion-view>

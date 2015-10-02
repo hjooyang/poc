@@ -151,6 +151,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       url: '/plus-cancer-step4',
       templateUrl: 'templates/product-plus-cancer-step4.html'
     })
+    .state('plus-cancer-step5', {
+      url: '/plus-cancer-step5',
+      templateUrl: 'templates/product-plus-cancer-step5.html'
+    })
 
   .state('tab.cyberwindow', {
       url: '/cyberwindow',

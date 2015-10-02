@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
       socket.on('S1', function (result) {
             // console.log('D:: addResult :: ', result);
             // PlusCancer.resultList = angular.copy(result);
-            console.log('Step1 Ping ', msg);
+            console.log('Step1 Ping ', result);
 
             for(var i=0; i<result.length; i++) 
               PlusCancer.addResult(result[i]);
@@ -111,9 +111,21 @@ angular.module('starter.controllers', [])
     $scope.submit = function(notice) {
       PlusCancer.setNotice(notice);
       socket.emit('S4', notice);
-      socket.on('S4', function() {
-        console.log('S4 Ping OK!');
-        $state.go("plus-cancer-step4");
+      socket.on('S4', function(msg) {
+        console.log('S4 Ping OK!', msg);
+        $state.go("plus-cancer-step5");
+      });
+    }
+  })
+  .controller('PlusCancerStep5Ctrl', function ($scope, $state, PlusCancer, Socket) {
+    var socket = Socket.getSocket();
+
+    $scope.submit = function(notice) {
+      PlusCancer.setNotice(notice);
+      socket.emit('S5', notice);
+      socket.on('S5', function(msg) {
+        console.log('S5 Ping OK!', msg);
+        $state.go("plus-cancer-step5");
       });
     }
   })

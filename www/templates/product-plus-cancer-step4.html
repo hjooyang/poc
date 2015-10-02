@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-      <form ng-controller="PlusCancerCtrl">
+      <form ng-controller="PlusCancerStep4Ctrl">
       <div class="list list-inset">
         <div class="card">
           <div class="item item-text-wrap">
@@ -28,8 +28,8 @@
               </div>
               <div class="row">
                 <div class="list col">
-                  <ion-radio ng-model="driveCheck" ng-value="'Y'" name="driveCheck">운전</ion-radio>
-                  <ion-radio ng-model="driveCheck" ng-value="'N'" name="driveCheck">미운전  </ion-radio>
+                  <ion-radio ng-model="notice.driveCheck" ng-value="'Y'" name="driveCheck">운전</ion-radio>
+                  <ion-radio ng-model="notice.driveCheck" ng-value="'N'" name="driveCheck">미운전  </ion-radio>
                 </div>
               </div>
             </div>
@@ -48,15 +48,15 @@
             </div>
             <div class="row">
               <div class="list col">
-                <ion-radio ng-model="healthCheck1" ng-value="'Y'" name="healthCheck">예</ion-radio>
-                <ion-radio ng-model="healthCheck1" ng-value="'N'" name="healthCheck">아니요  </ion-radio>
+                <ion-radio ng-model="notice.healthCheck1" ng-value="'Y'" name="healthCheck">예</ion-radio>
+                <ion-radio ng-model="notice.healthCheck1" ng-value="'N'" name="healthCheck">아니요  </ion-radio>
               </div>
             </div>
           </div>
         </div>
       </div>
       </div>
-      <button class="button button-full button-orange" ng-click="submit(info)" ui-sref="plus-cancer-step4">확인 및 마지막 단계 진행</button>
+      <button class="button button-full button-orange" ng-click="submit(notice)" ui-sref="plus-cancer-step4">확인 및 마지막 단계 진행</button>
     </form>
   </ion-content>
 </ion-view>
