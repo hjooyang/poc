@@ -31,40 +31,39 @@ angular.module('starter.controllers', [])
   };
 })
 
-  .controller('PlusCancerCtrl', function($scope, $state, PlusCancer, Products) {
-
-    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
+  .controller('PlusCancerCtrl', function($scope, $state, PlusCancer, Products, Socket) {
+    var socket = Socket.getSocket();
 
     $scope.submit = function(data) {
-      socket.emit('D',data);
+      socket.emit('S1',data);
       PlusCancer.data = data;
       console.log("PlusCancer.data :: ", PlusCancer.data);
 
-      $state.go('plus-cancer-step2');
+      socket.on('S1', function (result) {
+            // console.log('D:: addResult :: ', result);
+            // PlusCancer.resultList = angular.copy(result);
+            console.log('Step1 Ping ', msg);
+
+            for(var i=0; i<result.length; i++) 
+              PlusCancer.addResult(result[i]);
+             $state.go('plus-cancer-step2');
+      });
       return false;
     }
   })
-  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
+  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal, Socket) {
 
-    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
+    var socket = Socket.getSocket();
     $scope.results = [];
     $scope.data = PlusCancer.getData();
     $scope.product = {};
 
-    socket.on('D', function (result) {
-            console.log('D:: addResult :: ', result);
-            PlusCancer.addResult(result);
-            console.log('PlusCancer.addResult :: ', PlusCancer.getResultList());
-            // PlusCancer.saveProduct.push(result);
-            $scope.results = PlusCancer.getResultList();
-            console.log('$scope.results :: ', $scope.results);
-      });
-
+    $scope.results = PlusCancer.getResultList();
 
     $scope.selected = function (product) {
       console.log("selected product ", product);
       PlusCancer.saveProduct(product);
-      console.log("PlusCancer.getProduct ", PlusCancer.getProduct());
+      // $scope.product = PlusCancer.getProduct();
     }
 
     $ionicModal.fromTemplateUrl('templates/checkInfoModal.html', {
@@ -74,48 +73,54 @@ angular.module('starter.controllers', [])
     });
 
     $scope.submit = function() {
+      socket.emit('S2',PlusCancer.getProduct());
+      console.log("submit ::", PlusCancer.getProduct());
 
-      // $scope.modal.show();
+      socket.on('S2', function(msg) {
+        // $scope.modal.show();
+        console.log('Step2 Ping ', msg);
+
        $ionicPopup.alert({
              title: 'Success',
              content: '가입절차로 넘어갑니다.'
            }).then(function(res) {
               $state.go('plus-cancer-step3');
            });
+         });
+      
       return false;
     }
-
-    socket.on('D', function (data) {
-            console.log('received :: ', data);
-            $scope.productLists.push(data);
-            $scope.productLists.push($scope.calPlusCancer(data));
-
-            console.log('productLists :: ', $scope.productLists[1]);
-    });
-
-
-  /*  socket.on('D', function (msg) {
-      console.log('received - ', msg);
-      console.log(msg.length);
-      // for (int i =0; i< msg.length; i++) {
-
-      // }
-    });*/
   })
-  .controller('PlusCancerStep3Ctrl', function ($scope, $state, PlusCancer) {
+  .controller('PlusCancerStep3Ctrl', function ($scope, $state, PlusCancer, Socket) {
+    var socket = Socket.getSocket();
 
     $scope.submit = function(info) {
       PlusCancer.setInfo(info);
       $scope.info = info;
+      socket.emit('S3', info);
+      socket.on('S3', function(msg) {
+        console.log('Step3 Ping ', msg);
+        $state.go("plus-cancer-step4");
+      });
 
-      $state.go("plus-cancer-step4");
+    }
+  })
+  .controller('PlusCancerStep4Ctrl', function ($scope, $state, PlusCancer, Socket) {
+    var socket = Socket.getSocket();
+
+    $scope.submit = function(notice) {
+      PlusCancer.setNotice(notice);
+      socket.emit('S4', notice);
+      socket.on('S4', function() {
+        console.log('S4 Ping OK!');
+        $state.go("plus-cancer-step4");
+      });
     }
   })
   .controller('SidePolicyPageCtrl', function ($scope) {
 
   })
   .controller('ModalCtrl', function($scope, PlusCancer) {
-    // $scope.product = PlusCancer.;
     console.log("modal controller ", $scope.data);
 
   })

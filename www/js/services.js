@@ -49,12 +49,17 @@ angular.module('starter.services', [])
   };
 })
 .factory('Socket', function() {
-  var socket = io.connect('http://linaserver0922.mybluemix.net');
-        socket.on('connect', function() {
-            socket.on('text', function(text) {
-                alert(text);
-            });
-        });
+  var socket = io.connect('http://lina-poc-prod.mybluemix.net');
+        // socket.on('connect', function() {
+        //     socket.on('text', function(text) {
+        //         alert(text);
+        //     });
+        // });
+      return {
+        getSocket: function() {
+          return socket;
+        }
+      }
 })
 .factory ('Products', function(){
   var productLists =[];
