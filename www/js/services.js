@@ -83,6 +83,7 @@ angular.module('starter.services', [])
   var resultList= [];
   var selectedProduct = {};
     var info = {};
+    var notice ={};
 
 
   return {
@@ -109,6 +110,12 @@ angular.module('starter.services', [])
     },
     setInfo: function (userInfo) {
       info = userInfo;
+    },
+    setNotice: function (inputNotice) {
+      notice = inputNotice;
+    },
+    getNotice: function () {
+      return notice;
     }
   };
 });

@@ -12,21 +12,82 @@
             납입방법 선택
           </div>
           <div class="list col">
-            <ion-radio class="text-center" ng-model="notice.automaticWD" ng-value="'automaticWD'" name="driveCheck">자동이체</ion-radio>
-            <ion-radio class="text-center" ng-model="notice.creditCard" ng-value="'creditCard'" name="driveCheck">신용카드</ion-radio>
+            <ion-radio class="text-center" ng-model="notice.pay" ng-value="'automatic'" name="driveCheck">자동이체</ion-radio>
+            <ion-radio class="text-center" ng-model="notice.pay" ng-value="'creditCard'" name="driveCheck">신용카드</ion-radio>
           </div>
         </div>
       </div>
-      <div class="item item-text-wrap">
-        <div class="row">
+      <div class="item item-text-wrap" ng-show="notice.pay=='automatic'" >
+        <div class="list">
+          <label class="item item-input">
+            <div class="input-label">예금주</div>
+            <!--<select ng-model="notice.bank" ng-change="getSizeNames(item.payTerm)">-->
+            <input type="text" ng-model="notice.depositor"/>
+          </label>
+          <!--<div class="col col-60 col-center">-->
+
+            <!--예금주a-->
+          <!--</div>-->
+          <!--<div class="col">-->
+            <!--<input type="text" ng-model="notice.depositor"/>-->
+          <!--</div>-->
+        </div>
+        <div class="list">
+          <label class="item">
           <div class="col col-60 col-center">
-            예금주
+            납입계좌 선택
           </div>
           <div class="col">
-            <input type="text" ng-model="notice.depositor"/>
+            <!--<div class="row">은행명</div>-->
+            <label class="item item-input item-select">
+              <div class="input-label">은행명</div>
+              <!--<select ng-model="notice.bank" ng-change="getSizeNames(item.payTerm)">-->
+              <select ng-model="notice.bank">
+                <option value=''>선택하세요</option>
+                <option value='국민은행'>국민은행</option>
+                <option value='우리은행'>우리은행</option>
+              </select>
+            </label>
+            <label class="item item-input">
+              <div class="input-label">계좌번호</div>
+              <input type="number" ng-model="notice.bankAccount" placeholder="(-)없이 입력하세요"/>
+              <button class="button button-calm">인증하기</button>
+            </label>
           </div>
+          </label>
+        </div>
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">2회 이후 보험료 납부 희망일</div>
+            <select name="payDate" ng-model="notice.payDate">
+              <option value="">선택하세요</option>
+              <option value="5">5일</option>
+              <option value="10">10일</option>
+              <option value="15">15일</option>
+            </select>
+          </label>
         </div>
       </div>
+      <!--<div class="item item-text-wrap" ng-show="notice.pay=='creditCard'" >-->
+        <!--<div class="row">-->
+          <!--<div class="col col-60 col-center">-->
+            <!--예금주-->
+          <!--</div>-->
+          <!--<div class="col">-->
+            <!--<input type="number" minlength="5"  placeholder="(-)없이 입력하세요" ng-model="notice.depositor"/>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="item item-text-wrap" ng-show="notice.pay == 'creditCard'">
+        <div class="list">
+          <label class="item item-input">
+            <div class="input-label">카드명의</div>
+            <input type="text" class="text" ng-model="notice.cardOwner"/>
+          </label>
+        </div>
+      </div>
+
     </div>
   </form>
   </ion-content>

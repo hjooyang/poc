@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
             // PlusCancer.resultList = angular.copy(result);
             console.log('Step1 Ping ', result);
 
-            for(var i=0; i<result.length; i++) 
+            for(var i=0; i<result.length; i++)
               PlusCancer.addResult(result[i]);
              $state.go('plus-cancer-step2');
       });
@@ -87,7 +87,7 @@ angular.module('starter.controllers', [])
               $state.go('plus-cancer-step3');
            });
          });
-      
+
       return false;
     }
   })
@@ -110,11 +110,11 @@ angular.module('starter.controllers', [])
 
     $scope.submit = function(notice) {
       PlusCancer.setNotice(notice);
-      socket.emit('S4', notice);
-      socket.on('S4', function(msg) {
-        console.log('S4 Ping OK!', msg);
+     //socket.emit('S4', notice);
+     // socket.on('S4', function(msg) {
+     //    console.log('S4 Ping OK!', msg);
         $state.go("plus-cancer-step5");
-      });
+      //});
     }
   })
   .controller('PlusCancerStep5Ctrl', function ($scope, $state, PlusCancer, Socket) {
