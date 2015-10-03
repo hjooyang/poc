@@ -31,8 +31,9 @@ angular.module('starter.controllers', [])
   };
 })
 
-  .controller('PlusCancerCtrl', function($scope, $state, PlusCancer, Products, Socket) {
-    var socket = Socket.getSocket();
+  .controller('PlusCancerCtrl', function($scope, $state, PlusCancer, Products) {
+    // var socket = Socket.getSocket();
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
     $scope.submit = function(data) {
       socket.emit('S1',data);
@@ -51,9 +52,10 @@ angular.module('starter.controllers', [])
       return false;
     }
   })
-  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal, Socket) {
+  .controller('PlusCancerStep2Ctrl', function($scope, $q, $ionicPopup, PlusCancer, Products, $state, $ionicModal) {
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
-    var socket = Socket.getSocket();
+    // var socket = Socket.getSocket();
     $scope.results = [];
     $scope.data = PlusCancer.getData();
     $scope.product = {};
@@ -92,12 +94,15 @@ angular.module('starter.controllers', [])
     }
   })
   .controller('PlusCancerStep3Ctrl', function ($scope, $state, PlusCancer, Socket) {
-    var socket = Socket.getSocket();
+    // var socket = Socket.getSocket();
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
     $scope.submit = function(info) {
       PlusCancer.setInfo(info);
       $scope.info = info;
+
       socket.emit('S3', info);
+      console.log('Step3: ', info);
       socket.on('S3', function(msg) {
         console.log('Step3 Ping ', msg);
         $state.go("plus-cancer-step4");
@@ -106,10 +111,12 @@ angular.module('starter.controllers', [])
     }
   })
   .controller('PlusCancerStep4Ctrl', function ($scope, $state, PlusCancer, Socket) {
-    var socket = Socket.getSocket();
+    // var socket = Socket.getSocket();
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
     $scope.submit = function(notice) {
-      PlusCancer.setNotice(notice);
+      PlusCancer.setNotice(notice)
+      console.log('notice ', notice);
      socket.emit('S4', notice);
       socket.on('S4', function(msg) {
          console.log('S4 Ping OK!', msg);
@@ -118,9 +125,12 @@ angular.module('starter.controllers', [])
     }
   })
   .controller('PlusCancerStep5Ctrl', function ($scope, $state, $ionicPopup, PlusCancer, Socket) {
-    var socket = Socket.getSocket();
+    // var socket = Socket.getSocket();
+    var socket = io.connect('http://lina-poc-prod.mybluemix.net');
 
     $scope.authenticate = function (bankInfo) {
+      console.log('bankInfo ', bankInfo);
+
       socket.emit('S5A', bankInfo);
       socket.on('S5A', function (msg) {
         console.log('S5 Authentication OK!', msg);
@@ -156,6 +166,7 @@ angular.module('starter.controllers', [])
 
     $scope.submit = function(confirm) {
       PlusCancer.setConfirm(confirm);
+      console.log('confirm ', confirm);
 
        //after protocol set
       socket.emit('S5', confirm);

@@ -26,7 +26,7 @@
           </label>
         </div>
         <div class="list">
-          <label class="item">
+          <!-- <label class="item"> -->
           <div class="col col-60 col-center">
             납입계좌 선택
           </div>
@@ -42,13 +42,17 @@
               </select>
             </label>
             <label class="item item-input">
-              <div class="input-label">계좌번호</div>
-              <input type="number" ng-model="confirm.bank.account" placeholder="(-)없이 입력하세요"/>
+              <span class="input-label">계좌번호</span>
+              <input type="number" ng-model="confirm.bank.account" >
             </label>
+            <!-- <label class="item item-input">
+              <div class="input-label">계좌번호</div>
+              <input type="text" ng-model="confirm.account" placeholder="(-)없이 입력하세요a"/>
+            </label> -->
 
           </div>
 
-          </label>
+          <!-- </label> -->
           <button class="button button-full button-calm" ng-click="authenticate(confirm.bank)">인증하기</button>
         </div>
         <div class="list">
