@@ -88,14 +88,27 @@
             </select>
 
           </label>
-          <label class="item item-input">
-            <div class="input-label">카드번호</div>
-            <input type="number" ng-model="confirm.card.num1" maxlength="4"/>
-            - <input type="number" ng-model="confirm.card.num2" maxlength="4"/>
-            - <input type="number" ng-model="confirm.card.num3" maxlength="4"/>
-            - <input type="number" ng-model="confirm.card.num4" maxlength="4"/>
-          </label>
 
+          <div class="item item-input" id="credit-card">
+            <span class="input-label">카드번호</span>
+            <div class="row">
+              <div class="col">
+                <input id="card1" type="tel" ng-model="confirm.card.num1" maxlength="4">
+              </div>
+              <span class="form-mid col-center">-</span>
+              <div class="col">
+                <input  id="card2" type="tel" ng-model="confirm.card.num2" maxlength="4">
+              </div>
+              <span class="form-mid col-center">-</span>
+              <div class="col">
+                <input id="card3" type="password" ng-model="confirm.card.num3" maxlength="4">
+              </div>
+              <span class="form-mid col-center">-</span>
+              <div class="col">
+                <input id="card4" type="password" ng-model="confirm.card.num4" maxlength="4">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
