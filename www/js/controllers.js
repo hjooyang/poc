@@ -110,19 +110,55 @@ angular.module('starter.controllers', [])
 
     $scope.submit = function(notice) {
       PlusCancer.setNotice(notice);
-     //socket.emit('S4', notice);
-     // socket.on('S4', function(msg) {
-     //    console.log('S4 Ping OK!', msg);
+     socket.emit('S4', notice);
+      socket.on('S4', function(msg) {
+         console.log('S4 Ping OK!', msg);
         $state.go("plus-cancer-step5");
-      //});
+      });
     }
   })
-  .controller('PlusCancerStep5Ctrl', function ($scope, $state, PlusCancer, Socket) {
+  .controller('PlusCancerStep5Ctrl', function ($scope, $state, $ionicPopup, PlusCancer, Socket) {
     var socket = Socket.getSocket();
 
-    $scope.submit = function(notice) {
-      PlusCancer.setNotice(notice);
-      socket.emit('S5', notice);
+    $scope.authenticate = function (bankInfo) {
+      socket.emit('S5A', bankInfo);
+      socket.on('S5A', function (msg) {
+        console.log('S5 Authentication OK!', msg);
+        $ionicPopup.alert({
+          title: '인증 완료',
+          content: '계좌가 인증되었습니다.'
+        }).then(function(res) {
+          //$state.go('plus-cancer-step3');
+        });
+      });
+      //$ionicPopup.alert({
+      //  title: '인증 완료',
+      //  content: '계좌가 인증되었습니다.'
+      //}).then(function (res) {
+      //  console.log('CLOSED!', res);
+      //});
+    }
+
+/*
+      socket.emit('S5A', bankInfo);
+      socket.on('S5A', function (msg) {
+        console.log('S5 Authentication OK!', msg);
+        $ionicPopup.alert({
+          title: '인증 완료',
+          content: '계좌가 인증되었습니다.'
+        }).then(function(res) {
+          //$state.go('plus-cancer-step3');
+        });
+      });
+
+    //}
+  */
+
+    $scope.submit = function(confirm) {
+      PlusCancer.setConfirm(confirm);
+
+       //after protocol set
+      socket.emit('S5', confirm);
       socket.on('S5', function(msg) {
         console.log('S5 Ping OK!', msg);
         $state.go("plus-cancer-step5");

@@ -79,45 +79,52 @@ angular.module('starter.services', [])
   }
 })
 .factory('PlusCancer', function () {
-  var data = {};
-  var resultList= [];
-  var selectedProduct = {};
+    var data = {};
+    var resultList= [];
+    var selectedProduct = {};
     var info = {};
     var notice ={};
+    var confirm = {};
 
 
-  return {
-    addResult: function(result) {
-      resultList.push(result);
-    },
-    getResultList: function() {
-      return resultList;
-    },
-    saveProduct: function(product) {
-      selectedProduct = product;
-    },
-    getProduct: function() {
-      return selectedProduct;
-    },
-    saveData: function(inputData) {
-      data = inputData;
-    },
-    getData: function() {
-      return data;
-    },
-    getInfo: function () {
-      return info;
-    },
-    setInfo: function (userInfo) {
-      info = userInfo;
-    },
-    setNotice: function (inputNotice) {
-      notice = inputNotice;
-    },
-    getNotice: function () {
-      return notice;
-    }
-  };
+    return {
+      addResult: function(result) {
+        resultList.push(result);
+      },
+      getResultList: function() {
+        return resultList;
+      },
+      saveProduct: function(product) {
+        selectedProduct = product;
+      },
+      getProduct: function() {
+        return selectedProduct;
+      },
+      saveData: function(inputData) {
+        data = inputData;
+      },
+      getData: function() {
+        return data;
+      },
+      getInfo: function () {
+        return info;
+      },
+      setInfo: function (userInfo) {
+        info = userInfo;
+      },
+      setNotice: function (inputNotice) {
+        notice = inputNotice;
+      },
+      getNotice: function () {
+        return notice;
+      },
+      setConfirm: function (inputConfirm) {
+        confirm = inputConfirm;
+      },
+      getConfirm: function () {
+        return confirml
+      }
+    };
 });
 /*
   .factory('PlusCancer', function() {
