@@ -1,0 +1,29 @@
+Step3 info
+{
+	name: "",
+	id1: "900000",
+	id2: "2111111",
+	phone: "",
+	driveCheck: "Y",
+	dataAgree: "Y",
+	consignmentAgree: "Y"
+}
+
+Step4
+{driveCheck: "Y", healthCheck1: "Y"} 
+
+Step5 - auth
+{depositor: "IBM", name: "우리은행", account: 101} 
+
+Step5
+{
+	pay: "creditCard", 
+	bank: {depositor: "", name:"", account:""}, 
+	payDate: "10", 
+	read: {detail:"y", compare:"y"}, 
+	card: {
+		cardOwner:"", 
+		company:"", 
+		card:{num1:"", num2:"",num3:"",num4:""}
+	}
+}
