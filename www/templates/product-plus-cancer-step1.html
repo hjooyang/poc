@@ -1,6 +1,6 @@
 <ion-view view-title="STEP.1 간단 보험료 계산">
-  <ion-content class="has-tabs-top">
-
+<!--   <ion-content class="has-tabs-top"> -->    
+  <ion-content>
     <div class="list list-inset">
       <h4>생년월일만으로 보험료 계산해 보세요.</h4>
       <form ng-submit ng-controller="PlusCancerCtrl">
@@ -11,10 +11,10 @@
           <input id="name" type="text" ng-model="name">
         </label> -->
           <input ng-model="data.productType" value="'PlusCancer'" hidden ng-init="data.productType='plusCancer'"/>
-        <label class="item item-input">
-          <span class="input-label">생년월일</span>
-          <input id="birth" type="date" ng-model="data.birth" placeholder="주민번호 앞자리">
-        </label>
+          <label class="item item-input">
+            <span class="input-label">생년월일</span>
+            <input id="birth" type="date" ng-model="data.birth" placeholder="주민번호 앞자리">
+          </label>
         </div>
         <div class="list">
           <span class="col">성별</span>
@@ -48,11 +48,6 @@
               </select>
             </label>
         </div>
-<!-- <<<<<<< HEAD
-        <button class="button button-full button-orange" ng-click="submit(data)" ui-sref="plus-cancer-step2">내 보험료 알아보기</button>
-======= -->
-      <!--   <button type="submit" class="button button-full button-positive" ui-sref="pluscancer-step1">내 보험료 알아보기</button> -->
-        <!--<button class="button button-full button-orange" ng-click="submit(data)" ui-sref="plus-cancer-step2">내 보험료 알아보기</button>-->
         <button class="button button-full button-orange" ng-click="submit(data)" >내 보험료 알아보기</button>
       </form>
     </div>
