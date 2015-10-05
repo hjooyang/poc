@@ -43,7 +43,6 @@ angular.module('starter.controllers', [])
       socket.on('S1', function (result) {
             //clear ResultList, and then save the results
             PlusCancer.getResultList().length=0;
-
             for(var i=0; i<result.length; i++)
               PlusCancer.addResult(result[i]);
              $state.go('plus-cancer-step2');
@@ -106,7 +105,6 @@ angular.module('starter.controllers', [])
         console.log('Step3 Ping ', msg);
         $state.go("plus-cancer-step4");
       });
-
     }
   })
   .controller('PlusCancerStep4Ctrl', function ($scope, $state, PlusCancer, Socket) {
@@ -170,6 +168,10 @@ angular.module('starter.controllers', [])
        //after protocol set
       socket.emit('S5', confirm);
       socket.on('S5', function(msg) {
+        $ionicPopup.alert({
+          title: '가입완료',
+          content: '가입이 완료되었습니다' 
+        });
         console.log('S5 Ping OK!', msg);
         $state.go("plus-cancer-step5");
       });
