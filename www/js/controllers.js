@@ -135,15 +135,8 @@ angular.module('starter.controllers', [])
           title: '인증 완료',
           content: '계좌가 인증되었습니다.'
         }).then(function(res) {
-          //$state.go('plus-cancer-step3');
         });
       });
-      //$ionicPopup.alert({
-      //  title: '인증 완료',
-      //  content: '계좌가 인증되었습니다.'
-      //}).then(function (res) {
-      //  console.log('CLOSED!', res);
-      //});
     }
 
 /*
@@ -160,6 +153,14 @@ angular.module('starter.controllers', [])
 
     //}
   */
+  $scope.detailAlert = function() {
+    if($scope.confirm.read.detail==true) {
+      $ionicPopup.alert({
+        title: '개인정보 수집 이용동의',
+        template: '<b>신청이 완료되면 최대 2일내로 고객님께 연락드립니다.</b><br/><div>*정보이용동의사항*</div><b>개인정보 수집 주체</b><br/>-라이나금융서비스<br/><b>수집하는 개인정보의 항목</b><br/>-이름,생년월일,성별,연락처<br/><b>개인정보의 보유 및 이용기간</b><br/>-동의일로부터 1년간<br/><b>개인정보의 수집/이용목적</b><br/>-전화,문자를 통한 상담신청 및 기타 상품 상담 및 권유'
+      });
+    }
+  }
 
     $scope.submit = function(confirm) {
       PlusCancer.setConfirm(confirm);

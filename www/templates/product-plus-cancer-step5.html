@@ -118,7 +118,7 @@
           청약문서 확인
         </div>
         <div class="item item-text-wrap">
-          <ion-checkbox ng-model="confirm.read.detail" ng-checked="checked">상품 상세 내용을 읽었으며 내용을 확인하였습니까?</ion-checkbox>
+          <ion-checkbox ng-model="confirm.read.detail" ng-checked="checked" ng-change="detailAlert()">상품 상세 내용을 읽었으며 내용을 확인하였습니까?</ion-checkbox>
           <ion-checkbox ng-model="confirm.read.compare" ng-checked="checked">비교안내문을 읽었으며 내용을 확인하였습니까?</ion-checkbox>
         </div>
       </div>
