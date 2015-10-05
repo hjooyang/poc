@@ -41,9 +41,8 @@ angular.module('starter.controllers', [])
       console.log("PlusCancer.data :: ", PlusCancer.data);
 
       socket.on('S1', function (result) {
-            // console.log('D:: addResult :: ', result);
-            // PlusCancer.resultList = angular.copy(result);
-            console.log('Step1 Ping ', result);
+            //clear ResultList, and then save the results
+            PlusCancer.getResultList().length=0;
 
             for(var i=0; i<result.length; i++)
               PlusCancer.addResult(result[i]);
