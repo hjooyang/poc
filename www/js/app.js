@@ -9,7 +9,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-
+/*
     var ibmbluemix, ibmpush;
     ibmbluemix = IBMBluemix.hybrid;
     ibmpush = IBMPush.hybrid;
@@ -45,6 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }).catch(function(err){
       ibmbluemix.getLogger().error("Error initializing the Push SDK");
     });
+*/
     /*
     var ibmbluemix, ibmpush;
     var values = {
