@@ -9,87 +9,41 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-/*
-    var ibmbluemix, ibmpush;
-    ibmbluemix = IBMBluemix.hybrid;
-    ibmpush = IBMPush.hybrid;
+      console.log("device is ready, let's initialize bluemix!!!!");
+      
+      var values = {
+          applicationId:'51f90516-06f4-43de-8c9b-814e0a4e00ec',
+          applicationRoute:'http://lina-poc-prod.mybluemix.net',
+          applicationSecret:'ba7a8224d5e25127167af1406d6f0a24784f9e14'
+      }; 
 
-    var setup  = {
-        applicationId: "5f57fdb9-1bcc-4801-888e-ec737c6080b4",
-        applicationRoute: "http://lina4.mybluemix.net",
-        applicationSecret: "ba51e2faa8612a8a2f1f05f01135da4ea78e5c12"
-    };
+      console.log("calling bluemix initialize with values--------------------------------");
+      IBMBluemix.initialize(values).then(function(status) {
+          console.log("IBM Bluemix Initialized", status);
+          return IBMPush.initializeService();
+      }).then(function(pushObj) {
+          console.log("IBM Push Initialized", pushObj);
+          push = pushObj;
+          return push.registerDevice("test1","test2","alertNotification");
+      }).catch(function(err){
+          IBMBluemix.getLogger().error("Error initializing the Bluemix SDK or registering device: " + err);         
+      });
 
- function alertNotification(message) {
-
-    ibmbluemix.getLogger().info("Received notification");
-    alert(JSON.stringify(message));
-}
-   // Initialize the IBM Bluemix SDK with the application parameters.
-    ibmbluemix.initialize(setup).then(function(){
-
-      return ibmpush.initializeService();
-
-    }).then(function(push){
-      push.registerDevice("MyDeviceName", "UserName", alertNotification).done(function(response) {
-    // Device successfully registered
-    console.log(" Device successfully registered");
-    }, function(err) {
-          console.log(" err: Device successfully registered");
-
-        // Handle errors
-    });
-
-      // Use the Push Service
-
-    }).catch(function(err){
-      ibmbluemix.getLogger().error("Error initializing the Push SDK");
-    });
-*/
-    /*
-    var ibmbluemix, ibmpush;
-    var values = {
-      applicationId: "5f57fdb9-1bcc-4801-888e-ec737c6080b4",
-      applicationRoute: "http://lina4.mybluemix.net",
-      applicationSecret: "ba51e2faa8612a8a2f1f05f01135da4ea78e5c12"
-    };
-
-
-    function initPush(){
-      console.log("initPush called---------------------------------");
-     ibmbluemix = IBMBluemix.hybrid;
-     ibmpush = IBMPush.hybrid;
-
-     console.log("calling bluemix initialize with values--------------------------------");
-     ibmbluemix.initialize(values).then(function(status) {
-        console.log("IBM Bluemix Initialized", status);
-        return ibmpush.initializeService();
-     }, function (err) {
-        console.error("IBM Bluemix initialized failed" , err);
-     }).then(function(pushObj) {
-        console.log("IBM Push Initialized", pushObj);
-        push = pushObj;
-        return push.registerDevice("LisaTest","Lisa123","pushReceived");
-     }, function (err) {
-        console.error("IBM Bluemix Push initialized failed" , err);
-     });
-    }
-
-    initPush();*/
-    MQA.startNewSession(
-   {
-      mode: "QA",
-      //or mode: "MARKET" for production mode
-      android: {
-         appKey: "1g1bd27c2ffb89c79f867f766e678caca72aad08c2g0g1g48400dc8" ,
-         notificationsEnabled: true
-        }
-      //   ,
-      // ios: {
-      //    appKey: "your_MQA_iOS_appKey" ,
-      //    screenShotsFromGallery: true,
-      //      }
-    },
+       
+      MQA.startNewSession(
+     {
+        mode: "QA",
+        //or mode: "MARKET" for production mode
+        android: {
+           appKey: "1g1bd27c2ffb89c79f867f766e678caca72aad08c2g0g1g48400dc8" ,
+           notificationsEnabled: true
+          }
+        //   ,
+        // ios: {
+        //    appKey: "your_MQA_iOS_appKey" ,
+        //    screenShotsFromGallery: true,
+        //      }
+      },
        {
       success: function () {console.log("Session Started successfully");},
       error: function (string) { console.log("Session error" + string);}
@@ -224,3 +178,9 @@ function pushReceived(info) {
    // alert('got a push message! ' + info.alert);
    console.log("push received!!")
 }
+
+function alertNotification (message) { 
+
+    IBMBluemix.getLogger().info("Received notification");           
+    alert(JSON.stringify(message));          
+  }
