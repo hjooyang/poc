@@ -13,7 +13,12 @@ angular.module('starter.controllers', [])
   };
 })
 .controller('CatalogCtrl', function($scope) {
-
+  console.log('CatalogCtrl');
+  $scope.$on('$ionicView.loaded', function() {
+    ionic.Platform.ready( function() {
+    if(navigator && navigator.splashscreen) navigator.splashscreen.hide();
+    });
+  });
 })
 
 .controller('CyberwindowCtrl', function($scope, Chats) {

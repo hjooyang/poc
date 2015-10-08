@@ -10,7 +10,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
       console.log("device is ready, let's initialize bluemix!!!!");
-      
       var values = {
           applicationId:'51f90516-06f4-43de-8c9b-814e0a4e00ec',
           applicationRoute:'http://lina-poc-prod.mybluemix.net',
@@ -24,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }).then(function(pushObj) {
           console.log("IBM Push Initialized", pushObj);
           push = pushObj;
-          return push.registerDevice("test1","test2","alertNotification");
+          return push.registerDevice("test1","test23","alertNotification");
       }).catch(function(err){
           IBMBluemix.getLogger().error("Error initializing the Bluemix SDK or registering device: " + err);         
       });
@@ -180,7 +179,6 @@ function pushReceived(info) {
 }
 
 function alertNotification (message) { 
-
     IBMBluemix.getLogger().info("Received notification");           
     alert(JSON.stringify(message));          
   }
