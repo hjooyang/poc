@@ -44,3 +44,13 @@ ul {
 	text-align: center;
 	font-weight: bold;
 }
+
+.catalog .card .item .product-title{
+  color:#555;
+  margin-bottom: 10px;
+}
+
+.catalog .card .item .product-subtitle {
+  color:#474FC4;
+  font-weight: bold;
+}
