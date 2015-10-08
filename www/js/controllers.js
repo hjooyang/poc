@@ -191,7 +191,7 @@ angular.module('starter.controllers', [])
           content: '가입이 완료되었습니다<br/>첫 화면으로 돌아갑니다' 
         });
         console.log('S5 Ping OK!', msg);
-        $state.go("tab-catalog");
+        $state.go("tab.catalog");
       });
     }
   })
