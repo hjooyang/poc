@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
   $scope.showRightMenu = function () {
     $ionicSideMenuDelegate.toggleRight();
   };
+  $scope.Catalog='<img class="title-image" src="images/ionic.png" />';
 })
 .controller('CatalogCtrl', function($scope) {
   console.log('CatalogCtrl');
@@ -144,6 +145,8 @@ angular.module('starter.controllers', [])
       });
     }
 
+
+
 /*
       socket.emit('S5A', bankInfo);
       socket.on('S5A', function (msg) {
@@ -167,6 +170,15 @@ angular.module('starter.controllers', [])
     }
   }
 
+  $scope.compareAlert = function() {
+    if($scope.confirm.read.compare==true) {
+      $ionicPopup.alert({
+        title: '개인정보 수집 이용동의',
+        template: '<div>*정보이용동의사항*</div><b>개인정보 취급 위탁을 받는 자</b><br/>-(주)디티에스아이<br/><b>개인정보 취급 위탁을 하는 업무</b><br/>-광고에 반응한 보험가입 상담신청자 개인정보를 서버에 수집, 보관, 처리, 전달, 파기하는 경우<br/><br/><b>*정보 재위탁 동의사항*</b><br/><b>개인정보 취급 재위탁을 받는 자</b><br/>-(주)작시스 코리아<br/><b>개인정보 취급 재위탁을 하는 업무</b><br/>-IDC서버호스팅, 인프라 이상 징후에 대한 대응 조치, 서버관리구역에 대한 출입통제 업무'
+      });
+    }
+  }
+
     $scope.submit = function(confirm) {
       PlusCancer.setConfirm(confirm);
       console.log('confirm ', confirm);
@@ -176,10 +188,10 @@ angular.module('starter.controllers', [])
       socket.on('S5', function(msg) {
         $ionicPopup.alert({
           title: '가입완료',
-          content: '가입이 완료되었습니다' 
+          content: '가입이 완료되었습니다<br/>첫 화면으로 돌아갑니다' 
         });
         console.log('S5 Ping OK!', msg);
-        $state.go("plus-cancer-step5");
+        $state.go("tab-catalog");
       });
     }
   })

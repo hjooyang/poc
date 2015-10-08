@@ -23,3 +23,24 @@ ul {
 #id-number input{
   padding-right: 0px;
 }
+
+.popup-head {
+    background-color: #009689;
+
+}
+.popup-title {
+	color: #ffffff;
+}
+
+.catalog-title {
+	text-align: center;
+}
+
+.notice-title {
+	text-align: center;
+}
+
+.catalog .card .item {
+	text-align: center;
+	font-weight: bold;
+}
